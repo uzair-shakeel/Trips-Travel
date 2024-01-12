@@ -6,6 +6,7 @@ import authRoutes from './routes/authRoutes.js';
 import userRoutes from './routes/userRoutes.js';
 import tourRoutes from './routes/tourRoutes.js';
 import reviewRoutes from './routes/reviewRoutes.js';
+import bookingRoutes from './routes/bookingRoutes.js';
 import dotenv from 'dotenv'
 import cookieParser from 'cookie-parser';
 
@@ -27,6 +28,7 @@ app.use('/api/auth', authRoutes);
 app.use('/api/user', userRoutes);
 app.use('/api/tour', tourRoutes);
 app.use('/api/review', reviewRoutes);
+app.use('/api/booking', bookingRoutes);
 
 app.get('/', (req, res) => {
   res.send('Welcome to the Trips & Travels API!');
