@@ -1,0 +1,28 @@
+.swiper-pagination-bullet {
+    width: 12px;
+    height: 12px;
+    border: 1px solid #181a1e !important;
+    opacity: 100% !important;
+    background: white !important;
+  }
+  
+  .swiper-pagination-bullet-active{
+    background: rgb(249 115 22) !important;
+    border: none !important;
+  }
+  
+  .swiper{
+    padding-bottom: 70px !important;
+  }
+  
+  .swiper-slide.swiper-slide-next{
+    background: rgb(249 115 22);
+    border-radius: 12px;
+    box-shadow: 0 20px 70px rgb(249 115 22 0.1) !important;
+  }
+
+  .swiper-slide.swiper-slide-next h4,
+  .swiper-slide.swiper-slide-next p{
+    color: white !important;
+  }
+  

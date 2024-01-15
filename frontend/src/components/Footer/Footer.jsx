@@ -1,41 +1,19 @@
-// Footer.jsx
-
 import Logo from './../../assets/images/logo.png';
-import React from 'react';
+import React, {useState} from 'react';
 import { FaFacebookF, FaTwitter, FaInstagram, FaYoutube, FaGithub } from 'react-icons/fa';
+import Newsletter from '../../shared/Newsletter';
 
 const Footer = () => {
+
   return (
     <footer className="bg-gray-800 text-white py-8">
       <div className="container mx-auto flex flex-col md:flex-row justify-between items-center">
         
         {/* Logo */}
-        <div className="flex items-center mb-4 md:mb-0">
+        <div className="flex flex-col items-center mb-4 md:mb-0">
           
           <img src={Logo} alt="Trips Travels Logo" className="h-20 mr-12"/>
-          
-          {/* Navigation Links */}
-          <nav className="flex flex-col  gap-4">
-            <a href="/about" className="hover:text-gray-300">
-              About Us
-            </a>
-            <a href="/tours" className="hover:text-gray-300">
-              Tours
-            </a>
-            <a href="/contact" className="hover:text-gray-300">
-              Contact Us
-            </a>
-            <a href="/blog" className="hover:text-gray-300">
-              Blog
-            </a>
-            <a href="/faq" className="hover:text-gray-300">
-              FAQ
-            </a>
-          </nav>
-        </div>
-
-        {/* Additional Information */}
-        <div className="flex flex-col mt-8 text-center md:text-left">
+          <div className="flex flex-col mt-8 text-center md:text-left">
           <p className="mb-2">
             Address: 123 Travel St, City, Country
           </p>
@@ -49,8 +27,10 @@ const Footer = () => {
             &copy; 2024 Trips Travels. All rights reserved.
           </p>
         </div>
+        </div>
 
-        
+        <Newsletter />
+
         {/* Social Media Links */}
         <div className="flex flex-col gap-4 mt-4 md:mt-0">
           <a href="#" className="text-white hover:text-gray-300">

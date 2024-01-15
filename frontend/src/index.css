@@ -1,3 +1,25 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.heading{
+    font-size: 45px;
+    color: orangered;
+    font-weight: bold;
+    text-align: center;
+
+}
+h2{
+    font-size: 40px;
+}
+
+h3{
+    font-size: 35px;
+}
+
+.para{
+    color: rgb(75, 75, 75);
+    text-align: center;
+    width: full;
+    padding-bottom: 40px;
+}
