@@ -6,7 +6,7 @@ const Tours = () => {
   const [pageCount, setPageCount] =useState(0);
   const [page, setPage] =useState(0);
   useEffect(() => {
-    const pages = Math.ceil(5/4);
+    const pages = Math.ceil(5/1);
     setPageCount(pages)
 
   }, [page])
@@ -20,9 +20,9 @@ const Tours = () => {
         <div className=''>
           <FeaturedTourList />
         </div>
-        <div className='flex items-center justify-center mt-8 gap-3'>
+        <div className='flex pagination items-center justify-center mt-8 gap-3'>
           {[...Array(pageCount).keys()].map(number => (
-            <span key={number} onClick={() => setPage(number)}>{number + 1}</span>
+            <span key={number} onClick={() => setPage(number)} className={page===number ? 'active_page' : 'spn'} >{number + 1}</span>
           ))}
         </div>
       </section>

@@ -2,6 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
+
 .heading{
     font-size: 45px;
     color: orangered;
@@ -23,3 +24,61 @@ h3{
     width: full;
     padding-bottom: 40px;
 }
+
+
+.form_label {
+    font: bold;
+    font-size: 16px;
+    margin-bottom: 2px;
+
+   }
+
+ .form_input {
+    width: 100%;
+    padding: 8px 12px;
+    font-size: 16px;
+    border-bottom: 1px solid rgb(194, 60, 11);
+
+ } 
+ .form_input:focus {
+    
+    outline: none;
+ } 
+
+ .btn{
+    padding: 10px 25px;
+    font-weight: 600;
+    background: rgb(249 115 22);
+    border-radius: 6px;
+    color: white;
+ }
+
+ .spn{
+    width: 2rem;
+    height: 2rem;
+    padding: 5px;
+    border: 1px solid black;
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 1.1rem;
+ }
+
+ .active_page{
+    background: rgb(249 115 22);
+    color: white;
+    width: 2rem;
+    height: 2rem;
+    padding: 5px;
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 1.1rem;
+    
+ }
