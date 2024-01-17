@@ -15,14 +15,16 @@ h2{
 }
 
 h3{
-    font-size: 35px;
-}
+   font-size: 32px;
+   font-weight: 600;
+   padding-top: 30px;
+   }
 
 .para{
     color: rgb(75, 75, 75);
-    text-align: center;
     width: full;
     padding-bottom: 40px;
+    text-align: center;
 }
 
 
@@ -41,6 +43,20 @@ h3{
 
  } 
  .form_input:focus {
+    
+    outline: none;
+ } 
+
+ .booking_input{
+    width: 100%;
+    border-radius: 3px;
+    padding: 10px 14px;
+    font-size: 16px;
+    margin-bottom: 8px;
+    border-bottom: 1px solid black;
+
+ } 
+ .booking_input:focus{
     
     outline: none;
  } 

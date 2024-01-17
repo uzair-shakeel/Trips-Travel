@@ -35,26 +35,10 @@ const Header = () => {
           <img src={Logo} alt="" className="h-full" />
         </div>
         <ul className="flex space-x-4">
-          <li>
-            <a href="/" className="hover:text-gray-300">
-              Home
-            </a>
-          </li>
-          <li>
-            <a href="/tours" className="hover:text-gray-300">
-              Tours
-            </a>
-          </li>
-          <li>
-            <Link to="/about" className="hover:text-gray-300">
-              About
-            </Link>
-          </li>
-          <li>
-            <a href="/contact" className="hover:text-gray-300">
-              Contact
-            </a>
-          </li>
+          <Link to='/home'>Home</Link>
+          <Link to='/tours'>Tours</Link>
+          <Link to='/about'>Gallery</Link>
+          <Link to='/contact'>Contact</Link>
         </ul>
         <div>
           {isAuthenticated ? (

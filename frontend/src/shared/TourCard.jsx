@@ -1,15 +1,13 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
 import { FaStar } from "react-icons/fa";
+import CalculateAvg from '../utils/CalculateAvg';
 
 const TourCard = ({tour}) => {
     const {photo, title, city, distance, price, desc, id, reviews} = tour;
 
-    const totalRating = reviews?.reduce((acc, item) => acc + item.rating, 0);
-    const avgRating = totalRating === 0 
-    ? "Not Rated" : totalRating ===1 ? totalRating : (totalRating / reviews?.length).toFixed(1) 
+    const {totalRating, avgRating} = CalculateAvg(reviews)
     
-
     return (
     <div className="max-w-sm  rounded overflow-hidden shadow-lg">
       <div className='relative'>
