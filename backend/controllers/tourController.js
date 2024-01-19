@@ -4,7 +4,7 @@ const getAllTours = async (req, res) => {
   const page = parseInt(req.query.page);
   try {
     const tours = await Tour.find().populate('reviews')
-    .skip(page * 10).limit(10);
+    .skip(page * 12).limit(12);
     res.status(200).json({succes: true, data: tours, count: tours.length});
   } catch (error) {
     console.error(error);
@@ -21,7 +21,7 @@ const getSingleTour = async (req, res) => {
       return res.status(404).json({ message: 'Tour not found' });
     }
 
-    res.status(200).json(tour);
+    res.status(200).json({success:true, data: tour, message:"Data Received Successfully"});
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: 'Internal Server Error' });
@@ -119,10 +119,6 @@ const getTourBySearch = async (req, res) => {
 };
 
 
-// tourController.js
-
-// ... (existing code)
-
 const getFeaturedTour = async (req, res) => {
   try {
     const featuredTours = await Tour.find({featured: true}).populate('reviews').limit(10);
@@ -144,7 +140,7 @@ const getTourCount = async (req, res) => {
     // Get the total count of tours
     const tourCount = await Tour.countDocuments();
 
-    res.status(200).json({ success: true, count: tourCount });
+    res.status(200).json({ success: true, data: tourCount });
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: 'Internal Server Error' });

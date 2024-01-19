@@ -2,8 +2,8 @@ import React, { useState } from 'react'
 import { FaStar } from 'react-icons/fa6';
 import {toast} from 'react-toastify'
 
-const Booking = ({tour, avgRating}) => {
-  const {price, reviews} = tour;
+const Booking = ({price, reviewsArray, avgRating}) => {
+  
   const [data, setData] = useState({
     userId: '01',
     fullName: '',
@@ -29,7 +29,7 @@ const Booking = ({tour, avgRating}) => {
         <h3 className='font-bold'>${price} <span>/per person</span></h3>
         <div className='flex items-center gap-2'>
                 <i><FaStar /></i>
-                <span>{avgRating}  ({reviews.length})</span>        
+                <span>{avgRating}  ({reviewsArray.length})</span>        
         </div>
       </div>
 

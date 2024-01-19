@@ -1,27 +1,34 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import {useParams} from 'react-router-dom'
 import avatar from '../assets/images/avatar.jpg'
-import tourData from '../assets/data/tours'
 import { FaPeopleGroup, FaLocationDot } from "react-icons/fa6";
 import { FaStar,FaMapPin, FaCity, FaDollarSign } from "react-icons/fa";
 import CalculateAvg from '../utils/CalculateAvg'
 import Booking from '../components/Booking/Booking'
 import {toast} from 'react-toastify'
+import useFetch from '../hooks/useFetch';
+import BASE_URL from "../utils/config";
 
 const TourDetails = () => {
   const reviewMsgRef = useRef();
   const [tourRating, setTourRating] = useState();
   const {id} = useParams();
-  const tour = tourData.find(tour => tour.id === id);
-  const {photo, title, desc, price, reviews, city, distance, maxGroupSize, address} = tour;
-  const {totalRating, avgRating} = CalculateAvg(reviews)
+
+  const {apiData: tour, error} = useFetch(`${BASE_URL}/tour/${id}`, {method: 'GET'})  
+  
+  // const [photo, title, desc, price, reviews, city, distance, maxGroupSize, address] = tour;
+  const { title = '', photo = '', desc = '', price  = '', reviews = '', city = '', distance = '', maxGroupSize = '', address = '' } = tour || {};
+
+  const reviewsArray = Array.isArray(reviews) ? reviews : [];
+  const {totalRating, avgRating} = CalculateAvg(reviewsArray)
+  console.log(price)
   const options = { day: 'numeric', month: 'long', year: 'numeric'}
 
   const handleSubmit = (e) => {
     e.preventDefault();
     const reviewText = reviewMsgRef.current.value
     toast.success(`Text: ${reviewText}, Rating: ${tourRating}`)
-    // alert(`${reviewText} ${tourRating}`)
+    
   }
 
   return (
@@ -39,7 +46,7 @@ const TourDetails = () => {
               <div className="flex items-center gap-12">
               <div className='flex items-center gap-2'>
                 <i><FaStar /></i>
-                <span>{avgRating}  ({reviews.length})</span>        
+                <span>{avgRating}  ({reviewsArray.length})</span>        
               </div>
               <div className='flex items-center gap-2'>
                 <i><FaMapPin /></i>
@@ -69,7 +76,7 @@ const TourDetails = () => {
             </div>
 
             <div>
-              <h3 className="">Reviews ({reviews.length} reviews)</h3>
+              <h3 className="">Reviews ({reviewsArray.length} reviews)</h3>
               <form onSubmit={handleSubmit}>
                 <div className="flex gap-1 my-2 text-orange-500">
                   <span className="cursor-pointer" onClick={() => setTourRating(1)}><i><FaStar /></i></span>
@@ -86,7 +93,7 @@ const TourDetails = () => {
               </form>
 
               <div>
-                {reviews?.map(review => (
+                {reviewsArray?.map(review => (
                   <div className="py-3 px-4">
                     <div className="flex items-center gap-4">
                     
@@ -114,7 +121,7 @@ const TourDetails = () => {
             </div>
           </div>
           <div className="w-full px-6  rounded-md flex-shrink ">
-              <Booking tour={tour} avgRating={avgRating} />
+              <Booking price={price} avgRating={avgRating} reviewsArray={reviewsArray} />
           </div>
         </div>
       </div>

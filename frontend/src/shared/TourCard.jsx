@@ -4,7 +4,7 @@ import { FaStar } from "react-icons/fa";
 import CalculateAvg from '../utils/CalculateAvg';
 
 const TourCard = ({tour}) => {
-    const {photo, title, city, distance, price, desc, id, reviews} = tour;
+    const {photo, title, city, distance, price, desc, _id, reviews} = tour;
 
     const {totalRating, avgRating} = CalculateAvg(reviews)
     
@@ -22,12 +22,12 @@ const TourCard = ({tour}) => {
         <span>{avgRating}  ({reviews.length})</span>        
         </div>
         </div>
-        <div className="font-bold text-lg mb-2"> <Link to={`/tours/${id}`} >{title}</Link></div>
+        <div className="font-bold text-lg mb-2"> <Link to={`/tours/${_id}`} >{title}</Link></div>
         <p className="text-gray-700 text-base">{desc}</p>
         <div className='flex items-center justify-between'>
         <p className=" text-md font-semibold mb-3 ">Starts From  <br /><span className='text-2xl'>Rs. {price}</span></p>
         
-        <Link to={`/tours/${id}`} className='py-2 px-3 font-semibold bg-orange-500 hover:bg-orange-300 rounded-md' >Book Now</Link>
+        <Link to={`/tours/${_id}`} className='py-2 px-3 font-semibold bg-orange-500 hover:bg-orange-300 rounded-md' >Book Now</Link>
       </div>
       </div>
     </div>
