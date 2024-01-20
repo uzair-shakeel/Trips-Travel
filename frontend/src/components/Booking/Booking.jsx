@@ -1,28 +1,68 @@
-import React, { useState } from 'react'
+import React, { useState, useContext, useEffect } from 'react'
 import { FaStar } from 'react-icons/fa6';
 import {toast} from 'react-toastify'
+import { AuthContext } from '../../context/AuthContext';
+import BASE_URL from '../../utils/config';
+import { useNavigate } from 'react-router-dom';
 
-const Booking = ({price, reviewsArray, avgRating}) => {
-  
-  
+const Booking = ({price,title, reviewsArray, avgRating}) => {
+  const currentDate = new Date().toISOString().split('T')[0];
+  const navigate = useNavigate();
+  const {user} = useContext(AuthContext)  
   const [data, setData] = useState({
-    userId: '01',
+    userId: user && user._id,
+    tourName: title,
     fullName: '',
+    totalPrice: price,
     phone: '',
-    guestsize: 1,
-    bookAt: '',
+    maxGroupSize: 1,
+    bookAt: currentDate,
     date: ''
   })
+
+  useEffect(() => {
+    setData((prevData) => ({
+      ...prevData,
+      tourName: title,
+      totalPrice: price,
+    }));
+  }, [title, price]);
+
 
   const handleChange = (e) => {
     setData(prev => ({...prev, [e.target.id]:e.target.value}))
   }
-  const handleSubmit = (e) => {
+
+  const handleSubmit = async(e) => {
     e.preventDefault();
-    toast.success('Your Trip has been Booked!')
     
-    console.log(data)
+    try {
+      if(user){
+        const response = await fetch(`${BASE_URL}/booking`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(data),
+        });
+        console.log(data)
+        const result = await response.json();
+        if (response.ok) {
+          toast.success('Booked')
+          navigate('/booked')
+        } else{
+          toast.error(result.message)
+        }
+      }
+      if(!user || user === null || user === undefined){
+        toast.error('Please Sign In first')
+      }
+      
+  } catch(err){
+    toast.error("Server not responding")
+  } 
   }
+
 
   return (
     <div className=''>
@@ -44,7 +84,7 @@ const Booking = ({price, reviewsArray, avgRating}) => {
             <input className='booking_input' type="text" placeholder='Contact No.' id='phone' required onChange={handleChange} />
           </div>
           <div>
-            <input className='booking_input' type="number" placeholder='Number of Persons?' id='guestSize' required onChange={handleChange} />
+            <input className='booking_input' type="number" placeholder='Number of Persons?' id='maxGroupSize' required onChange={handleChange} />
           </div>
           <div>
             <input className='booking_input' type="date" id='date' required onChange={handleChange} />
@@ -60,7 +100,7 @@ const Booking = ({price, reviewsArray, avgRating}) => {
           </div>
           <div className='flex my-6 justify-between font-bold text-lg'>
             <span>Net Price: </span>
-            <p>Rs. {price}</p>
+            <p>Rs. {data.maxGroupSize * price}</p>
           </div>
           </div>
           <button type='submit' className='btn w-full'>Book</button>

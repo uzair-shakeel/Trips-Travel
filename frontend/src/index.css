@@ -68,6 +68,12 @@ h3{
     border-radius: 6px;
     color: white;
  }
+ .noCbtn{
+    padding: 10px 25px;
+    font-weight: 600;
+    border-radius: 6px;
+    color: white;
+ }
 
  .spn{
     width: 2rem;

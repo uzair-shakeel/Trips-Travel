@@ -5,15 +5,7 @@ import mongoose from 'mongoose';
 const bookingSchema = new mongoose.Schema(
   {
     
-    // tourId: {
-    //   type: mongoose.Types.ObjectId,
-    //   ref: 'Tour',
-    //     type: String
-    //     required: true,
-    // },
     userId: {
-    //   type: mongoose.Types.ObjectId,
-    //   ref: 'User',
       type: String,
       required: true,
     },

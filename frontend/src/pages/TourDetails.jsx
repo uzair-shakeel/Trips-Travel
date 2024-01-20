@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useRef, useState } from "react";
-import {useNavigate, useParams} from 'react-router-dom'
+import {useParams} from 'react-router-dom'
 import avatar from '../assets/images/avatar.jpg'
 import { FaPeopleGroup, FaLocationDot } from "react-icons/fa6";
 import { FaStar,FaMapPin, FaCity, FaDollarSign } from "react-icons/fa";
@@ -11,7 +11,6 @@ import BASE_URL from "../utils/config";
 import { AuthContext } from "../context/AuthContext";
 
 const TourDetails = () => {
-  const navigate = useNavigate();
   const {user} = useContext(AuthContext);
   const reviewMsgRef = useRef();
   const [tourRating, setTourRating] = useState();
@@ -20,15 +19,16 @@ const TourDetails = () => {
   const {apiData: tour, error} = useFetch(`${BASE_URL}/tour/${id}`, {method: 'GET'})
   const { title = '', photo = '', desc = '', price  = '', reviews = '', city = '', distance = '', maxGroupSize = '', address = '' } = tour || {};
   const reviewsArray = Array.isArray(reviews) ? reviews : [];
-  const { username = '', reviewText = '', rating = '' } = reviewsArray[{}] || {};
   const {totalRating, avgRating} = CalculateAvg(reviewsArray)
-  console.log(price)
   const options = { day: 'numeric', month: 'long', year: 'numeric'}
+
+
+  
 
   const handleSubmit = async(e) => {
     e.preventDefault();
     const reviewText = reviewMsgRef.current.value
-
+    
     try {
       if(user){
         const reviewData = {
@@ -45,8 +45,8 @@ const TourDetails = () => {
         });
         const result = await response.json();
         if (response.ok) {
-  
-          setTimeout(window.location.reload(), 20);
+          console.log(user)
+          // setTimeout(window.location.reload(), 20);
         } else{
           toast.error(result.message)
         }
@@ -134,16 +134,16 @@ const TourDetails = () => {
                     <div>
                       <div>
                         <div>
-                          <h5 className="text-lg font-semibold">{username}</h5>
-                          <p className="text-gray-700 text-sm">{new Date('01-18-2024').toLocaleDateString("en-US", options)}</p>
+                          <h5 className="text-lg font-semibold">{review.username}</h5>
+                          <p className="text-gray-700 text-sm">{new Date(review.createdAt).toLocaleDateString("en-US", options)}</p>
                         </div>
                       </div>
                     </div>
                     </div>
                     <div className="flex items-center py-3 px-12 justify-between">
-                      <h5 className="text-lg">{reviewText}</h5>
+                      <h5 className="text-lg">{review.reviewText}</h5>
                       <div></div>
-                      <span className='flex items-center gap-1'>{rating}<i><FaStar className='text-orange-500' /></i></span>
+                      <span className='flex items-center gap-1'>{review.rating}<i><FaStar className='text-orange-500' /></i></span>
                     </div>
                   </div>
                 ))}
@@ -151,7 +151,7 @@ const TourDetails = () => {
             </div>
           </div>
           <div className="w-full px-6  rounded-md flex-shrink ">
-              <Booking price={price} avgRating={avgRating} reviewsArray={reviewsArray} />
+              <Booking title={title} price={price} avgRating={avgRating} reviewsArray={reviewsArray} />
           </div>
         </div>
       </div>
