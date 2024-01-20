@@ -1,39 +1,53 @@
-// Register.jsx
-
-import React, { useState } from 'react';
+import React, { useState, useContext} from 'react';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import RegisterImg from './../assets/images/register.png';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import BASE_URL from '../utils/config'
 
 const Register = () => {
-  const [username, setUsername] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
+  const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(false);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setIsLoading(true);
+    const [formData, setFormData] = useState({
+      username: '',
+      email: '',
+      password: '',
+      photo: 'Null',
+      role:'user',
+    })
+    
+      const handleInput = (e) => {
+        setFormData({...formData, [e.target.name]:e.target.value})
+        
+      }
 
-    // Simulating registration functionality (e.g., API call, validation)
-    setTimeout(() => {
-      setIsLoading(false);
-
-      // Display success notification
-      toast.success('Successfully registered!', {
-        position: 'top-right',
-        autoClose: 3000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+    // setIsLoading(true)
+    try {
+      const response = await fetch(`${BASE_URL}/auth/register`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
       });
-    }, 2000);
-  };
+      const {message} = await response.json();
   
+      if (response.ok) {
+        // console.log('User registered successfully:', message);
+        toast.success(message)
+        navigate('/login')
+      } else{
+        toast.error(message)
+      }
+  } catch(err){
+    toast.error("Server not responding")
+  }
+}
+
+
   return (
     <div className="min-h-screen md:min-h-[400px] flex items-center justify-center bg-gray-100">
       <div className="bg-white mx-6 p-6 md:p-8 rounded-lg shadow-md w-full max-w-xl m-8 md:max-w-5xl grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-12">
@@ -53,53 +67,40 @@ const Register = () => {
 
         <form onSubmit={handleSubmit} className="space-y-2 md:space-y-3">
           <div>
-            <label htmlFor="username" className="block text-md md:text-lg font-medium text-gray-600">Username</label>
+            <label htmlFor="" className="block text-md md:text-lg font-medium text-gray-600">Username</label>
             <input
               type="text"
-              id="username"
+              name='username'
               placeholder="Enter your username"
               className="w-full px-4 py-2 border rounded-md focus:outline-none focus:border-orange-500"
-              value={username}
-              onChange={(e) => setUsername(e.target.value)}
+              value={formData.username}
+              onChange={handleInput}
               required
             />
           </div>
 
           <div>
-            <label htmlFor="email" className="block text-md md:text-lg font-medium text-gray-600">Email</label>
+            <label htmlFor="" className="block text-md md:text-lg font-medium text-gray-600">Email</label>
             <input
               type="email"
-              id="email"
+              name='email'
               placeholder="Enter your email"
               className="w-full px-4 py-2 border rounded-md focus:outline-none focus:border-orange-500"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              value={formData.email}
+              onChange={handleInput}
               required
             />
           </div>
 
           <div>
-            <label htmlFor="password" className="block text-md md:text-lg font-medium text-gray-600">Password</label>
+            <label htmlFor="" className="block text-md md:text-lg font-medium text-gray-600">Password</label>
             <input
               type="password"
-              id="password"
+              name='password'
               placeholder="Enter your password"
               className="w-full px-4 py-2 border rounded-md focus:outline-none focus:border-orange-500"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              required
-            />
-          </div>
-
-          <div>
-            <label htmlFor="confirmPassword" className="block text-md md:text-lg font-medium text-gray-600">Confirm Password</label>
-            <input
-              type="password"
-              id="confirmPassword"
-              placeholder="Confirm your password"
-              className="w-full px-4 py-2 border rounded-md focus:outline-none focus:border-orange-500"
-              value={confirmPassword}
-              onChange={(e) => setConfirmPassword(e.target.value)}
+              value={formData.password}
+              onChange={handleInput}
               required
             />
           </div>

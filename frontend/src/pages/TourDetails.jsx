@@ -1,5 +1,5 @@
-import React, { useEffect, useRef, useState } from "react";
-import {useParams} from 'react-router-dom'
+import React, { useContext, useEffect, useRef, useState } from "react";
+import {useNavigate, useParams} from 'react-router-dom'
 import avatar from '../assets/images/avatar.jpg'
 import { FaPeopleGroup, FaLocationDot } from "react-icons/fa6";
 import { FaStar,FaMapPin, FaCity, FaDollarSign } from "react-icons/fa";
@@ -8,27 +8,57 @@ import Booking from '../components/Booking/Booking'
 import {toast} from 'react-toastify'
 import useFetch from '../hooks/useFetch';
 import BASE_URL from "../utils/config";
+import { AuthContext } from "../context/AuthContext";
 
 const TourDetails = () => {
+  const navigate = useNavigate();
+  const {user} = useContext(AuthContext);
   const reviewMsgRef = useRef();
   const [tourRating, setTourRating] = useState();
   const {id} = useParams();
 
-  const {apiData: tour, error} = useFetch(`${BASE_URL}/tour/${id}`, {method: 'GET'})  
-  
-  // const [photo, title, desc, price, reviews, city, distance, maxGroupSize, address] = tour;
+  const {apiData: tour, error} = useFetch(`${BASE_URL}/tour/${id}`, {method: 'GET'})
   const { title = '', photo = '', desc = '', price  = '', reviews = '', city = '', distance = '', maxGroupSize = '', address = '' } = tour || {};
-
   const reviewsArray = Array.isArray(reviews) ? reviews : [];
+  const { username = '', reviewText = '', rating = '' } = reviewsArray[{}] || {};
   const {totalRating, avgRating} = CalculateAvg(reviewsArray)
   console.log(price)
   const options = { day: 'numeric', month: 'long', year: 'numeric'}
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async(e) => {
     e.preventDefault();
     const reviewText = reviewMsgRef.current.value
-    toast.success(`Text: ${reviewText}, Rating: ${tourRating}`)
-    
+
+    try {
+      if(user){
+        const reviewData = {
+          username: user.username,
+          reviewText,
+          rating: tourRating
+        }
+        const response = await fetch(`${BASE_URL}/review/${id}`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(reviewData),
+        });
+        const result = await response.json();
+        if (response.ok) {
+  
+          setTimeout(window.location.reload(), 20);
+        } else{
+          toast.error(result.message)
+        }
+      }
+      if(!user || user === null || user === undefined){
+        toast.error('Please Sign In first')
+      }
+      
+  } catch(err){
+    toast.error("Server not responding")
+    console.log(err)
+  } 
   }
 
   return (
@@ -78,12 +108,12 @@ const TourDetails = () => {
             <div>
               <h3 className="">Reviews ({reviewsArray.length} reviews)</h3>
               <form onSubmit={handleSubmit}>
-                <div className="flex gap-1 my-2 text-orange-500">
-                  <span className="cursor-pointer" onClick={() => setTourRating(1)}><i><FaStar /></i></span>
-                  <span className="cursor-pointer" onClick={() => setTourRating(2)}><i><FaStar /></i></span>
-                  <span className="cursor-pointer" onClick={() => setTourRating(3)}><i><FaStar /></i></span>
-                  <span className="cursor-pointer" onClick={() => setTourRating(4)}><i><FaStar /></i></span>
-                  <span className="cursor-pointer" onClick={() => setTourRating(5)}><i><FaStar /></i></span>
+                <div className="flex gap-1 my-2 ">
+                  <span className={tourRating === 1 ? 'cursor-pointer text-orange-800' : 'cursor-pointer text-orange-500 hover:text-orange-800'} onClick={() => setTourRating(1)}><i><FaStar /></i></span>
+                  <span className={tourRating === 2 ? 'cursor-pointer text-orange-800' : 'cursor-pointer text-orange-500 hover:text-orange-800'} onClick={() => setTourRating(2)}><i><FaStar /></i></span>
+                  <span className={tourRating === 3 ? 'cursor-pointer text-orange-800' : 'cursor-pointer text-orange-500 hover:text-orange-800'} onClick={() => setTourRating(3)}><i><FaStar /></i></span>
+                  <span className={tourRating === 4 ? 'cursor-pointer text-orange-800' : 'cursor-pointer text-orange-500 hover:text-orange-800'} onClick={() => setTourRating(4)}><i><FaStar /></i></span>
+                  <span className={tourRating === 5 ? 'cursor-pointer text-orange-800' : 'cursor-pointer text-orange-500 hover:text-orange-800'} onClick={() => setTourRating(5)}><i><FaStar /></i></span>
                 </div>
 
               <div className="flex my-8 overflow-hidden gap-4 w-full  border-orange-500 border-[1px] rounded-full">
@@ -104,16 +134,16 @@ const TourDetails = () => {
                     <div>
                       <div>
                         <div>
-                          <h5 className="text-lg font-semibold">Muhmd</h5>
+                          <h5 className="text-lg font-semibold">{username}</h5>
                           <p className="text-gray-700 text-sm">{new Date('01-18-2024').toLocaleDateString("en-US", options)}</p>
                         </div>
                       </div>
                     </div>
                     </div>
                     <div className="flex items-center py-3 px-12 justify-between">
-                      <h5 className="text-lg">Good Work</h5>
+                      <h5 className="text-lg">{reviewText}</h5>
                       <div></div>
-                      <span className='flex items-center gap-1'>5 <i><FaStar className='text-orange-500' /></i></span>
+                      <span className='flex items-center gap-1'>{rating}<i><FaStar className='text-orange-500' /></i></span>
                     </div>
                   </div>
                 ))}

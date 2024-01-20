@@ -45,8 +45,7 @@ const loginUser = async (req, res) => {
     if (!isPasswordValid) {
       return res.status(401).json({ message: 'Invalid credentials' });
     }
-    const {role, ...rest} = user._doc;
-
+    const { password: _, role, ...rest } = user._doc;
     // Generate a JWT token
     // const token = jwt.sign({ id: user._id, role: user.role }, process.env.SECRET_KEY, { expiresIn: '5d' });
     const token = jwt.sign({ id: user._id, role: user.role }, process.env.SECRET_KEY, { expiresIn: '5d' });;
@@ -55,7 +54,7 @@ const loginUser = async (req, res) => {
     res.cookie('accessToken', token, { httpOnly: true, expires:token.expiresIn })
 
 
-    res.status(200).json({ message: 'Login successful' });
+    res.status(200).json({ message: 'Login successful', data:{...rest}, token, role });
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: 'Internal Server Error' });

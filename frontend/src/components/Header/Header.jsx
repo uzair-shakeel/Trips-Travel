@@ -1,13 +1,20 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect, useContext } from 'react';
 import Logo from './../../assets/images/logo.png';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { AuthContext } from '../../context/AuthContext';
+import { toast } from 'react-toastify';
 
 const Header = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const headerRef = useRef(null);
+  const navigate = useNavigate();
+  const {user, dispatch} = useContext(AuthContext);
 
+  
   const handleLogout = () => {
-    setIsAuthenticated(!isAuthenticated);
+    dispatch({type: "LOGOUT"})
+    navigate('/home')
+    toast.info('Logged Out')
   };
 
   useEffect(() => {
@@ -41,10 +48,13 @@ const Header = () => {
           <Link to='/contact'>Contact</Link>
         </ul>
         <div>
-          {isAuthenticated ? (
-            <button onClick={handleLogout} className="px-4 py-2 bg-orange-400 text-white rounded hover:bg-orange-300">
+          {user ? (
+            <div className='flex gap-3 items-center'>
+            <h6 className='text-[20px] font-semibold'>{user.username}</h6>
+            <button onClick={handleLogout} className="px-4 py-2 bg-black text-white rounded hover:bg-gray-800">
               Logout
             </button>
+            </div>
           ) : (
             <>
               <Link to="/login">

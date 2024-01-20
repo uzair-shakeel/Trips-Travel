@@ -4,6 +4,7 @@ import {toast} from 'react-toastify'
 
 const Booking = ({price, reviewsArray, avgRating}) => {
   
+  
   const [data, setData] = useState({
     userId: '01',
     fullName: '',

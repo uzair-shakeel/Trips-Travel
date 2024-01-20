@@ -1,36 +1,87 @@
-// Login.jsx
-
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import LoginImg from './../assets/images/login.png';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { AuthContext } from '../context/AuthContext'
+import BASE_URL from '../utils/config';
+
 
 const Login = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+
+  // const [email, setEmail] = useState('');
+  // const [password, setPassword] = useState('');
   const [isLoading, setIsLoading] = useState(false);
 
-  const handleSubmit = (e) => {
+  const navigate = useNavigate();
+  const {dispatch} = useContext(AuthContext);
+  const [formData, setFormData] = useState({
+    email: '',
+    password: ''
+  })
+
+  const handleInput = (e) => {
+    setFormData({...formData, [e.target.name]:e.target.value})
+  }
+
+  const logInHandler = async (e) => {
     e.preventDefault();
-    setIsLoading(true);
 
-    // Simulating login functionality (e.g., API call, validation)
-    setTimeout(() => {
-      setIsLoading(false);
-
-      // Display success notification
-      toast.success('Successfully logged in!', {
-        position: 'top-right',
-        autoClose: 3000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
+    try {
+      const response = await fetch(`${BASE_URL}/auth/login`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
       });
-    }, 2000);
-  };
+      const result = await response.json();
+      console.log(result);
+      
+      if (response.ok) {
+        
+      dispatch({
+        type: "LOGIN_SUCCESS",
+        payload: {
+          user: result.data,
+          token: result.token,
+          role: result.role
+        }
+      })
+        toast.success(result.message)
+        navigate('/home')
+      } else{
+        toast.error(result.message)
+      }
+  } catch(err){
+    toast.error("Server not responding")
+  }
+}
+
+  
+
+
+
+  // const handleSubmit = (e) => {
+  //   e.preventDefault();
+  //   setIsLoading(true);
+
+  //   // Simulating login functionality (e.g., API call, validation)
+  //   setTimeout(() => {
+  //     setIsLoading(false);
+
+  //     // Display success notification
+  //     toast.success('Successfully logged in!', {
+  //       position: 'top-right',
+  //       autoClose: 3000,
+  //       hideProgressBar: false,
+  //       closeOnClick: true,
+  //       pauseOnHover: true,
+  //       draggable: true,
+  //       progress: undefined,
+  //     });
+  //   }, 2000);
+  // };
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100">
@@ -48,16 +99,16 @@ const Login = () => {
             <p className="text-sm md:text-base text-gray-500">Enter your credentials to access your account.</p>
           </div>
 
-          <form onSubmit={handleSubmit} className="space-y-4 md:space-y-6">
+          <form onSubmit={logInHandler} className="space-y-4 md:space-y-6">
             <div>
               <label htmlFor="email" className="block text-md md:text-lg font-medium text-gray-600">Email</label>
               <input
                 type="email"
-                id="email"
+                name="email"
                 placeholder="Enter your email"
                 className="w-full px-4 py-2 border rounded-md focus:outline-none focus:border-orange-500"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
+                value={formData.email}
+                onChange={handleInput}
                 required
               />
             </div>
@@ -66,11 +117,11 @@ const Login = () => {
               <label htmlFor="password" className="block text-md md:text-lg font-medium text-gray-600">Password</label>
               <input
                 type="password"
-                id="password"
+                name="password"
                 placeholder="Enter your password"
                 className="w-full px-4 py-2 border rounded-md focus:outline-none focus:border-orange-500"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
+                value={formData.password}
+                onChange={handleInput}
                 required
               />
             </div>
