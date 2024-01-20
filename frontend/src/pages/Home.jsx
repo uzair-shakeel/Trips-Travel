@@ -25,7 +25,7 @@ const Home = () => {
           <div>
           <div className="my-8">
           <h1 className="text-[40px]  font-bold mb-4 ">
-            Plan Your Perfect Trip with <span className='text-orange-500'>TripsTravel</span>
+            Plan Your Perfect Trip with <span className='text-BaseColor'>TripsTravel</span>
           </h1>
           <p className="text-lg leading-8 text-gray-800">
           "Welcome to TripsTravel, your go-to destination for unforgettable adventures! Explore diverse destinations, plan seamlessly, and embark on a journey of a lifetime. Discover handpicked accommodations, connect with like-minded travelers, and create lasting memories. Your next adventure awaits with TripsTravel!"
@@ -55,8 +55,8 @@ const Home = () => {
       {/* {Services Section Starts} */}
       <section className='pb-12 px-12 '>
        <div className="container mx-auto mt-8 flex">
-      <div className="mb-6 flex-shrink-0 flex-1 min-w-[30%]">
-        <h2 className="text-[43px]  font-bold mb-4 text-orange-600 ">Our Best Services</h2>
+      <div className="mb-6 flex-shrink-0 mx-4 flex-1 min-w-[30%]">
+        <h2 className="text-[38px]  font-bold mb-4 text-BaseColor ">Our Best Services</h2>
         <p className='text-xl leading-7 '>"Empowering Your Journey: Unrivaled Services Tailored to Elevate Your Experience."</p>
         {/* Add Slider Component or Carousel Component if needed */}
       </div>
@@ -68,7 +68,7 @@ const Home = () => {
       {/* {Gallery Section Start} */}
       <section className='py-8 text-center px-12'>
       <h1 className="text-[40px]  font-bold  ">
-            Our <span className='text-orange-500'>Gallery</span>
+            Our <span className='text-BaseColor'>Gallery</span>
           </h1>
           <p className="text-lg leading-8 mb-8 text-gray-800">
           "Unveil travel wonders in our gallery, a snapshot of TripsTravel's adventures."
@@ -91,7 +91,7 @@ const Home = () => {
       <div className="py-8 px-12">
       <div className="mx-auto text-center xl:w-[470px]">
       <h1 className="text-[40px]  font-bold  ">
-            Our <span className='text-orange-500'>Reviews</span>
+            Our <span className='text-BaseColor'>Reviews</span>
           </h1>
           <p className="text-lg leading-8 mb-8 text-gray-800">
           "Read what our travelers have to say in their own words. Real stories, real experiences."
@@ -111,7 +111,7 @@ const Home = () => {
           </div>
 
           <div className="w-full md:w-1/2">
-            <h2 className="text-3xl text-orange-600 font-bold text-center">Frequently Asked Question.</h2>
+            <h2 className="text-3xl text-BaseColor font-bold text-center">Frequently Asked Question.</h2>
 
             <FaqList />
           </div>

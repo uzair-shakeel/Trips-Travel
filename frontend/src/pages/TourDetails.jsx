@@ -116,9 +116,9 @@ const TourDetails = () => {
                   <span className={tourRating === 5 ? 'cursor-pointer text-orange-800' : 'cursor-pointer text-orange-500 hover:text-orange-800'} onClick={() => setTourRating(5)}><i><FaStar /></i></span>
                 </div>
 
-              <div className="flex my-8 overflow-hidden gap-4 w-full  border-orange-500 border-[1px] rounded-full">
+              <div className="flex my-8 overflow-hidden gap-4 w-full  border-BaseColor border-[1px] rounded-full">
                 <input type="text" ref={reviewMsgRef} placeholder="Share your thoughts" className="focus:outline-none flex-1 py-2 px-4 " />
-                <button className="bg-orange-500 py-2  px-4 my-2 mx-2 text-white rounded-full" type="submit">Submit</button>
+                <button className="bg-BaseColor hover:bg-BHoverColor animate-fade-in duration-300 py-2 hover:px-6 px-4 my-1 mx-1 text-white rounded-full" type="submit">Submit</button>
               </div>
               </form>
 
@@ -143,7 +143,7 @@ const TourDetails = () => {
                     <div className="flex items-center py-3 px-12 justify-between">
                       <h5 className="text-lg">{review.reviewText}</h5>
                       <div></div>
-                      <span className='flex items-center gap-1'>{review.rating}<i><FaStar className='text-orange-500' /></i></span>
+                      <span className='flex items-center gap-1'>{review.rating}<i><FaStar className='text-BaseColor' /></i></span>
                     </div>
                   </div>
                 ))}

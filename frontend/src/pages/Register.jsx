@@ -62,17 +62,17 @@ const Register = () => {
         <div className="flex flex-col justify-center">
           <div className="text-center mb-6">
             <h2 className="text-2xl md:text-3xl font-bold text-gray-800 mb-2">Register</h2>
-            <p className="text-sm md:text-base text-gray-500">Create your account to start your journey.</p>
+            <p className="text-sm md:text-base text-GrayColor">Create your account to start your journey.</p>
           </div>
 
         <form onSubmit={handleSubmit} className="space-y-2 md:space-y-3">
           <div>
-            <label htmlFor="" className="block text-md md:text-lg font-medium text-gray-600">Username</label>
+            <label htmlFor="" className="block text-md md:text-lg font-medium text-GrayColor">Username</label>
             <input
               type="text"
               name='username'
               placeholder="Enter your username"
-              className="w-full px-4 py-2 border rounded-md focus:outline-none focus:border-orange-500"
+              className="w-full px-4 py-2 border rounded-md focus:outline-none focus:border-BaseColor"
               value={formData.username}
               onChange={handleInput}
               required
@@ -80,12 +80,12 @@ const Register = () => {
           </div>
 
           <div>
-            <label htmlFor="" className="block text-md md:text-lg font-medium text-gray-600">Email</label>
+            <label htmlFor="" className="block text-md md:text-lg font-medium text-GrayColor">Email</label>
             <input
               type="email"
               name='email'
               placeholder="Enter your email"
-              className="w-full px-4 py-2 border rounded-md focus:outline-none focus:border-orange-500"
+              className="w-full px-4 py-2 border rounded-md focus:outline-none focus:border-BaseColor"
               value={formData.email}
               onChange={handleInput}
               required
@@ -93,12 +93,12 @@ const Register = () => {
           </div>
 
           <div>
-            <label htmlFor="" className="block text-md md:text-lg font-medium text-gray-600">Password</label>
+            <label htmlFor="" className="block text-md md:text-lg font-medium text-GrayColor">Password</label>
             <input
               type="password"
               name='password'
               placeholder="Enter your password"
-              className="w-full px-4 py-2 border rounded-md focus:outline-none focus:border-orange-500"
+              className="w-full px-4 py-2 border rounded-md focus:outline-none focus:border-BaseColor"
               value={formData.password}
               onChange={handleInput}
               required
@@ -108,12 +108,12 @@ const Register = () => {
           <div>
             <button
               type="submit"
-              className="w-full py-2 md:py-3 mb-2 md:mb-4 rounded-md text-white font-semibold bg-orange-400 hover:bg-orange-300"
+              className="w-full btn my-3"
               disabled={isLoading}
             >
               {isLoading ? 'Registering...' : 'Register'}
             </button>
-            <p className="text-sm md:text-base text-center">Already have an Account? <Link className='text-orange-600 hover:text-orange-800' to='/login'>Login here</Link></p>
+            <p className="text-sm md:text-base text-center">Already have an Account? <Link className='text-BaseColor hover:text-BHoverColor' to='/login'>Login here</Link></p>
           </div>
         </form>
         </div>

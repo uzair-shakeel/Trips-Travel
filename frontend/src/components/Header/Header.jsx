@@ -50,7 +50,7 @@ const Header = () => {
         <div>
           {user ? (
             <div className='flex gap-3 items-center'>
-            <h6 className='text-[20px] font-semibold'>{user.username}</h6>
+            <h6 className='text-[18px] font-semibold text-BaseColor rounded hover:text-BHoverColor'>{user.username}</h6>
             <button onClick={handleLogout} className="px-4 py-2 bg-black text-white rounded hover:bg-gray-800">
               Logout
             </button>
@@ -58,12 +58,12 @@ const Header = () => {
           ) : (
             <>
               <Link to="/login">
-                <button className="px-4 py-2 text-orange-500 rounded hover:text-orange-300">
+                <button className="px-4 py-2 text-BaseColor rounded hover:text-BHoverColor">
                   Login
                 </button>
               </Link>
               <Link to="/register">
-                <button className="px-4 py-2 bg-orange-400 text-white rounded hover:bg-orange-300">
+                <button className="btn">
                   Register
                 </button>
               </Link>

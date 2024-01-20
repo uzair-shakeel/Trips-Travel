@@ -12,7 +12,7 @@ const TourCard = ({tour}) => {
     <div className="max-w-sm  rounded overflow-hidden shadow-lg">
       <div className='relative'>
       <img className="" src={photo} alt={title} />
-      <p className='absolute pr-8 pl-4 text-white font-semibold py-1 bottom-2 rounded-l-full right-0 z-10 bg-orange-600 text-lg'>Featured</p>
+      <p className='absolute pr-8 pl-4 text-white font-semibold py-1 bottom-2 rounded-l-full right-0 z-10 bg-BHoverColor text-lg'>Featured</p>
       </div>
       <div className="px-6 py-4">
         <div className='flex item-center text-center justify-between'>
@@ -27,7 +27,7 @@ const TourCard = ({tour}) => {
         <div className='flex items-center justify-between'>
         <p className=" text-md font-semibold mb-3 ">Starts From  <br /><span className='text-2xl'>Rs. {price}</span></p>
         
-        <Link to={`/tours/${_id}`} className='py-2 px-3 font-semibold bg-orange-500 hover:bg-orange-300 rounded-md' >Book Now</Link>
+        <Link to={`/tours/${_id}`} className='btn' >Book Now</Link>
       </div>
       </div>
     </div>

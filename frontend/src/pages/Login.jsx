@@ -8,10 +8,7 @@ import BASE_URL from '../utils/config';
 
 
 const Login = () => {
-
-  // const [email, setEmail] = useState('');
-  // const [password, setPassword] = useState('');
-  const [isLoading, setIsLoading] = useState(false);
+const [isLoading, setIsLoading] = useState(false);
 
   const navigate = useNavigate();
   const {dispatch} = useContext(AuthContext);
@@ -58,30 +55,6 @@ const Login = () => {
   }
 }
 
-  
-
-
-
-  // const handleSubmit = (e) => {
-  //   e.preventDefault();
-  //   setIsLoading(true);
-
-  //   // Simulating login functionality (e.g., API call, validation)
-  //   setTimeout(() => {
-  //     setIsLoading(false);
-
-  //     // Display success notification
-  //     toast.success('Successfully logged in!', {
-  //       position: 'top-right',
-  //       autoClose: 3000,
-  //       hideProgressBar: false,
-  //       closeOnClick: true,
-  //       pauseOnHover: true,
-  //       draggable: true,
-  //       progress: undefined,
-  //     });
-  //   }, 2000);
-  // };
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100">
@@ -106,7 +79,7 @@ const Login = () => {
                 type="email"
                 name="email"
                 placeholder="Enter your email"
-                className="w-full px-4 py-2 border rounded-md focus:outline-none focus:border-orange-500"
+                className="w-full px-4 py-2 border rounded-md focus:outline-none focus:border-BaseColor"
                 value={formData.email}
                 onChange={handleInput}
                 required
@@ -119,7 +92,7 @@ const Login = () => {
                 type="password"
                 name="password"
                 placeholder="Enter your password"
-                className="w-full px-4 py-2 border rounded-md focus:outline-none focus:border-orange-500"
+                className="w-full px-4 py-2 border rounded-md focus:outline-none focus:border-BaseColor"
                 value={formData.password}
                 onChange={handleInput}
                 required
@@ -129,12 +102,12 @@ const Login = () => {
             <div>
               <button
                 type="submit"
-                className="w-full py-2 md:py-3 mb-2 md:mb-4 rounded-md text-white font-semibold bg-orange-400 hover:bg-orange-300"
+                className="w-full btn my-3"
                 disabled={isLoading}
               >
                 {isLoading ? 'Logging in...' : 'Login'}
               </button>
-              <p className="text-sm md:text-base text-center">Don't have an Account? <Link className='text-orange-600 hover:text-orange-800' to='/register'>Register here</Link></p>
+              <p className="text-sm md:text-base text-center">Don't have an Account? <Link className='text-BaseColor hover:text-BHoverColor' to='/register'>Register here</Link></p>
             </div>
           </form>
         </div>

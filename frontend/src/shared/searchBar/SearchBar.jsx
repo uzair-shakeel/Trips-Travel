@@ -63,7 +63,7 @@ import {useNavigate} from 'react-router-dom'
       </div>
       <div className='overflow-hidden'>
           
-          <RiFindReplaceFill onClick={SubmitHandler} className='h-10 w-10 cursor-pointer text-orange-600'  />
+          <RiFindReplaceFill onClick={SubmitHandler} className='h-10 w-10 cursor-pointer text-BaseColor hover:text-BHoverColor'  />
           
       </div>
     </form>

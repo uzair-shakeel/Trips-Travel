@@ -7,7 +7,7 @@
   }
   
   .swiper-pagination-bullet-active{
-    background: rgb(249 115 22) !important;
+    background: #B71C1C !important;
     border: none !important;
   }
   
@@ -16,7 +16,7 @@
   }
   
   .swiper-slide.swiper-slide-next{
-    background: rgb(249 115 22);
+    background: #B71C1C;
     border-radius: 12px;
     box-shadow: 0 20px 70px rgb(249 115 22 0.1) !important;
   }

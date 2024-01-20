@@ -1,11 +1,19 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import url('https://fonts.googleapis.com/css2?family=Kanit:wght@200;300;500&family=Outfit:wght@100;300;400;600&family=Roboto:wght@300;400;500;700&display=swap');
 
+*{
+   padding: 0;
+   margin: 0;
+   /* font-family: 'Kanit', sans-serif; */
+/* font-family: 'Outfit', sans-serif; */
+font-family: 'Roboto', sans-serif;
+}
 
 .heading{
     font-size: 45px;
-    color: orangered;
+    color: #B71C1C;
     font-weight: bold;
     text-align: center;
 
@@ -39,7 +47,7 @@ h3{
     width: 100%;
     padding: 8px 12px;
     font-size: 16px;
-    border-bottom: 1px solid rgb(194, 60, 11);
+    border-bottom: 1px solid #B71C1C;
 
  } 
  .form_input:focus {
@@ -64,9 +72,18 @@ h3{
  .btn{
     padding: 10px 25px;
     font-weight: 600;
-    background: rgb(249 115 22);
+    background: #B71C1C;
     border-radius: 6px;
     color: white;
+    transition: .5s;
+ }
+ .btn:hover{
+    padding: 10px 25px;
+    font-weight: 600;
+    background: #D32F2F;
+    border-radius: 20px;
+    color: white;
+    transition: .5s;
  }
  .noCbtn{
     padding: 10px 25px;
@@ -90,7 +107,7 @@ h3{
  }
 
  .active_page{
-    background: rgb(249 115 22);
+    background: #B71C1C;
     color: white;
     width: 2rem;
     height: 2rem;
@@ -104,3 +121,4 @@ h3{
     font-size: 1.1rem;
     
  }
+

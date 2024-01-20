@@ -71,7 +71,7 @@ const Testimonial = () => {
                 <SwiperSlide key={index}>
             <div  className="py-[30px] px-5  rounded-3xl">
                 <div className="flex items-center gap-[13px]">
-                <div className='h-16 w-16 overflow-hidden border-solid border-orange-600 border-2 rounded-full'>
+                <div className='h-16 w-16 overflow-hidden border-solid border-white border-2 rounded-full'>
                 <img  src={data.pic} alt="" className='object-cover w-full h-full  ' />
                 </div>
                 <div>

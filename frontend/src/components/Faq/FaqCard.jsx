@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import {AiOutlineMinus, AiOutlinePlus} from 'react-icons/ai'
+
 
 const FaqCard = ({item}) => {
   const [open, setOpen] = useState(false);
@@ -13,15 +13,11 @@ const FaqCard = ({item}) => {
         <h4 className="text-[16px] leading-7 lg:text-[20px] lg:leading-8 text-HeadingColor">
           {item.question}
         </h4>
-        <div 
-        className={` ${open && "bg-Color text-white border-none"} w-7 h-7 lg:w-8 lg:h-8 border border-solid border-[#141F21] rounded flex items-center justify-center`}>
-          {open ? <AiOutlineMinus /> : <AiOutlinePlus />}
-        </div>
       </div>
 
       {open && (
         <div className="mt-4">
-          <p className="text-[13px] text-gray-700 leading-6 lg:text-[15px] lg:leading-7 font-[400] text-TextColor">
+          <p className="text-[13px] text-GrayColor leading-6 lg:text-[15px] lg:leading-7 font-[400] text-TextColor">
             {item.content}
           </p>
         </div>

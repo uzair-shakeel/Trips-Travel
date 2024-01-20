@@ -5,7 +5,16 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        BaseColor: "#B71C1C",
+        GreenColor: "#388E3C",
+        GrayColor: "#455A64",
+        PurpleColor: "#880E4F",
+        BHoverColor: "#D32F2F",
+        
+      },
+    },
   },
   plugins: [],
 }

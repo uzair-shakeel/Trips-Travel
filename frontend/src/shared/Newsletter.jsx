@@ -32,9 +32,9 @@ const Newsletter = () => {
       value={email}
       onChange={handleInputChange}
       required
-      className="px-4 py-2 border border-gray-300 rounded-md mb-4 focus:outline-none focus:border-blue-500"
+      className="px-4 py-2 border border-gray-300 rounded-md mb-4 focus:outline-none focus:border-BaseColor"
     />
-    <button type="submit" className="bg-orange-500 text-white px-6 py-2 rounded-md hover:bg-orange-700 transition duration-300">
+    <button type="submit" className="btn">
       Subscribe
     </button>
   </form>
