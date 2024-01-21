@@ -45,8 +45,7 @@ const TourDetails = () => {
         });
         const result = await response.json();
         if (response.ok) {
-          console.log(user)
-          // setTimeout(window.location.reload(), 20);
+          window.location.reload()
         } else{
           toast.error(result.message)
         }

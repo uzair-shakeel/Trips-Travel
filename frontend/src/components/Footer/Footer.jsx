@@ -1,4 +1,4 @@
-import Logo from './../../assets/images/logo.png';
+import Logo from './../../assets/images/logo3.png';
 import React, {useState} from 'react';
 import { FaFacebookF, FaTwitter, FaInstagram, FaYoutube, FaGithub } from 'react-icons/fa';
 import Newsletter from '../../shared/Newsletter';

@@ -86,10 +86,19 @@ h3{
     transition: .5s;
  }
  .noCbtn{
-    padding: 10px 25px;
-    font-weight: 600;
-    border-radius: 6px;
-    color: white;
+   padding: 10px 25px;
+   font-weight: 600;
+   border-radius: 6px;
+   color: white;
+   transition: .5s;
+ }
+ 
+ .noCbtn:hover{
+   padding: 10px 25px;
+   font-weight: 600;
+   border-radius: 20px;
+   color: white;
+   transition: .5s;
  }
 
  .spn{

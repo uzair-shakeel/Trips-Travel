@@ -1,14 +1,11 @@
 import React from 'react'
-import TourCard from '../../shared/TourCard'
-import tourData from '../../assets/data/tours'
 import useFetch from '../../hooks/useFetch'
 import BASE_URL from '../../utils/config'
-
+import TourCard from '../../shared/TourCard'
 
 const FeaturedTourList = () => {
   const {apiData: featuredToursData, error} = useFetch(`${BASE_URL}/tour/`)
   
-  // console.log(featuredToursData)
   return (
 <>
     {error && <h4>{error}</h4>  }

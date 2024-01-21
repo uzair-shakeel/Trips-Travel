@@ -1,7 +1,7 @@
 import React, { useState, useContext} from 'react';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import RegisterImg from './../assets/images/register.png';
+import RegisterImg from './../assets/images/signup2.png';
 import { Link, useNavigate } from 'react-router-dom';
 import BASE_URL from '../utils/config'
 
@@ -13,7 +13,7 @@ const Register = () => {
       username: '',
       email: '',
       password: '',
-      photo: 'Null',
+      photo: '',
       role:'user',
     })
     

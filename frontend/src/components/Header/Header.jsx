@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect, useContext } from 'react';
-import Logo from './../../assets/images/logo.png';
+import Logo from './../../assets/images/logo3.png';
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthContext';
 import { toast } from 'react-toastify';
@@ -50,7 +50,7 @@ const Header = () => {
         <div>
           {user ? (
             <div className='flex gap-3 items-center'>
-            <h6 className='text-[18px] font-semibold text-BaseColor rounded hover:text-BHoverColor'>{user.username}</h6>
+              <Link className='text-[18px] font-semibold text-BaseColor rounded hover:text-BHoverColor cursor-pointer' to='/my-account'>{user.username}</Link>
             <button onClick={handleLogout} className="px-4 py-2 bg-black text-white rounded hover:bg-gray-800">
               Logout
             </button>

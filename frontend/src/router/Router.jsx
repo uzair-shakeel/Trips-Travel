@@ -9,11 +9,13 @@ import SearchResultList from '../pages/SearchResultList'
 import About from '../pages/About'
 import Contact from '../pages/Contact'
 import Booked from '../pages/Booked'
+import MyAccount from '../Dashboard/UserAccount/MyAccount'
 const Router = () => {
   return (
     <Routes>
         <Route path='/' element={<Navigate to='/home' />} />
         <Route path='/home' element={<Home />} />
+        <Route path='/my-account' element={<MyAccount />} />
         <Route path='/login' element={<Login />} />
         <Route path='/register' element={<Register />} />
         <Route path='/tours' element={<Tours />} />

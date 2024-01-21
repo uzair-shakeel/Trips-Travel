@@ -1,7 +1,7 @@
 import React, { useState, useContext } from 'react';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import LoginImg from './../assets/images/login.png';
+import LoginImg from './../assets/images/login2.png';
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../context/AuthContext'
 import BASE_URL from '../utils/config';

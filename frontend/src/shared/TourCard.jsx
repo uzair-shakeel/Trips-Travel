@@ -4,7 +4,7 @@ import { FaStar } from "react-icons/fa";
 import CalculateAvg from '../utils/CalculateAvg';
 
 const TourCard = ({tour}) => {
-    const {photo, title, city, distance, price, desc, _id, reviews} = tour;
+    const {photo, title, city, distance, price, desc, _id, reviews, featured} = tour;
 
     const {totalRating, avgRating} = CalculateAvg(reviews)
     
@@ -12,7 +12,11 @@ const TourCard = ({tour}) => {
     <div className="max-w-sm  rounded overflow-hidden shadow-lg">
       <div className='relative'>
       <img className="" src={photo} alt={title} />
+      {featured === true 
+      ? 
       <p className='absolute pr-8 pl-4 text-white font-semibold py-1 bottom-2 rounded-l-full right-0 z-10 bg-BHoverColor text-lg'>Featured</p>
+      : ''
+    }
       </div>
       <div className="px-6 py-4">
         <div className='flex item-center text-center justify-between'>

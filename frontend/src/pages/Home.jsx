@@ -64,7 +64,6 @@ const Home = () => {
     </div>
       </section>
  
-
       {/* {Gallery Section Start} */}
       <section className='py-8 text-center px-12'>
       <h1 className="text-[40px]  font-bold  ">
