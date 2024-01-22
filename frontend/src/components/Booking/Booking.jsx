@@ -19,14 +19,15 @@ const Booking = ({price,title, reviewsArray, avgRating}) => {
     bookAt: currentDate,
     date: ''
   })
+  const calculatedPrice = data.maxGroupSize * price;
 
   useEffect(() => {
     setData((prevData) => ({
       ...prevData,
       tourName: title,
-      totalPrice: price,
+      totalPrice: calculatedPrice,
     }));
-  }, [title, price]);
+  }, [title, calculatedPrice]);
 
 
   const handleChange = (e) => {
@@ -100,7 +101,7 @@ const Booking = ({price,title, reviewsArray, avgRating}) => {
           </div>
           <div className='flex my-6 justify-between font-bold text-lg'>
             <span>Net Price: </span>
-            <p>Rs. {data.maxGroupSize * price}</p>
+            <p>Rs. {calculatedPrice}</p>
           </div>
           </div>
           <button type='submit' className='btn w-full'>Book</button>
