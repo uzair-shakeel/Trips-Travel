@@ -11,15 +11,22 @@ const Bookings = () => {
 
   return (
     <div className='py-8'>
-    <div className='grid grid-cols-1 lg:grid-cols-3 gap-5'>
+    <div className='flex flex-col gap-5'>
+    <table className=' table-auto gap-4 border-collapse border'>
+              <thead className='w-full py-2'>
+                <tr>
+                  <th className="tableData">Tour</th>
+                  <th className="tableData">Persons</th>
+                  <th className="tableData">Booked for</th>
+                  <th className="tableData">Price</th>
+                  <th></th>
+                </tr>
+              </thead>
       {bookings?.map(booking => (
         <BookingCard booking={booking} key={booking._id} />
         ))}
+        </table>
     </div>
-        {/* { bookings !== null ? 
-  :
-        <p className='my-3 text-cent'>You didn't have any appointments.</p>
-      } */}
       </div>
   )
 }

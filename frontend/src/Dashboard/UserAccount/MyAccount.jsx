@@ -4,12 +4,15 @@ import {toast} from 'react-toastify'
 import avatar from '../../assets/images/avatar.jpg'
 import Bookings from './Bookings'
 import BASE_URL  from '../../utils/config'
-import token  from '../../utils/token'
+import {useNavigate} from 'react-router-dom'
+import Profile from './Profile'
 
 const MyAccount = () => {
-  const {user, dispatch} = useContext(AuthContext)
+  const {user, dispatch, token} = useContext(AuthContext)
   const [tab, setTab] = useState('bookings')  
-  console.log(user._id)
+  const navigate = useNavigate();
+
+
   const deleteAccount = async()=> {
     try {
       const response = await fetch(`${BASE_URL}/user/users/${user._id}`, {
@@ -21,12 +24,11 @@ const MyAccount = () => {
       });
       const {message} = await response.json();
   
-      if (response.ok) {
-        dispatch({ type: "LOGOUT"})
-        toast.success(message)
-        
-      } else{
+      if (!response.ok) {
         toast.error(message)
+      } else{
+        dispatch({ type: "LOGOUT"})
+        navigate('/register')
       }
   } catch(err){
     toast.error("Server not responding")
@@ -44,7 +46,7 @@ const MyAccount = () => {
         <div className='py-[50px] px-[30px] rounded-md'>
           <div className='flex items-center justify-center'>
             <figure className='w-[100px] h-[100px] rounded-full border-2 border-solid border-Color'>
-              <img src={user.photo || avatar} alt="" className='w-full h-full rounded-full' />
+              <img src={avatar} alt="" className='w-full h-full rounded-full' />
             </figure>
           </div>
 
@@ -54,7 +56,7 @@ const MyAccount = () => {
           </div>
 
           <div className='mt-[50px] md:mt-[70px]'>
-            <button  className='w-full mb-2 btn'>Update Name</button>
+            <button onClick={() => setTab('settings')} className='w-full mb-2 btn'>Update Name</button>
             <button onClick={deleteAccount} className='w-full bg-black noCbtn hover:bg-gray-900 '>Delete Account</button>
           </div>
         </div>
@@ -65,7 +67,7 @@ const MyAccount = () => {
             <button onClick={() => setTab('settings')} className={`${tab==='settings' && 'bg-GrayColor text-white font-bold'} p-2 mr-5 px-5 rounded-md text-HeadingColor font-semibold text-[16px] leading-7 border border-solid border-Color`}>Profile Settings</button>
           </div>
           {tab==='bookings' && <Bookings />}
-          {/* {tab==='settings' && <Profile user={userData}/>} */}
+          {tab==='settings' && <Profile user={user} dispatch={dispatch} token={token} />}
         
         </div>
       </div>

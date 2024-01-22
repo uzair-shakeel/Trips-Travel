@@ -27,20 +27,20 @@ const BookingCard = ({booking}) => {
     
   
     return (
-    <div className="max-w-sm  rounded overflow-hidden py-2 px-3 bg-gray-100 shadow-lg">
-        <div className='flex h-[70%] flex-col'>
-        <div className="font-bold text-lg mb-2">{tourName}</div>
-        <p className="text-gray-700 text-base">Rs. {totalPrice}</p>
-        <p className="text-gray-700 text-base">booked for {maxGroupSize}</p>
-        <p className="text-gray-700 text-base">booked on {date}</p>
+      <>
 
-        </div>
-      <div className='flex items-center flex-shrink justify-center my-3'>
-
-      <button onClick={deleteBooking} className='noCbtn bg-black hover:bg-gray-900 w-full'>Cancel Booking</button>
-      </div>
-      
-      </div>
+              <tbody className='rounded overflow-hidden py-8 px-3 bg-gray-100 shadow-lg'>
+                
+                  <tr className='w-full text-center overflow-hidden'>
+                    <td className="tableData text-start">{tourName}</td>
+                    <td>{maxGroupSize}</td>
+                    <td>{date}</td>
+                    <td>{totalPrice}</td>
+                    <td><button onClick={deleteBooking} className='noCbtn bg-black my-2 mx-2 hover:bg-gray-900 '>Cancel Booking</button></td>
+                  </tr>
+                
+              </tbody>
+      </>
   )
   
 }

@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import FeaturedTourList from '../components/featruredTour/FeaturedTourList'
-import SearchBar from '../shared/searchBar/SearchBar'
 import useFetch from '../hooks/useFetch'
 import  BASE_URL  from '../utils/config'
 import TourCard from '../shared/TourCard'
+import SearchTours from '../components/Search/SearchTours'
 
 const Tours = () => {
   const [pageCount, setPageCount] =useState(0);
@@ -19,10 +19,8 @@ const Tours = () => {
 
   return (
     <div>
-      {/* <SearchBar /> */}
+      <SearchTours />
        <section className='min-h-screen py-8 px-12'>
-      <h1 className='heading '>Tours</h1>
-      <p className='para'>"Embark on Unforgettable Journeys: Discover Our Featured Tours, Where Adventure Meets Extraordinary Experiences."</p>
         <div className='grid md:grid-cols-3 lg:grid-cols-4 gap-6'>
           {tours?.map(tour => (
             <div key={tour._id}>

@@ -1,38 +1,34 @@
 import React, {useContext, useEffect, useState} from 'react'
-import {token, BASE_URL} from '../../config'
-import convertToBase64 from '../../utils/cloudinary'
 import {toast} from 'react-toastify'
-import { AuthContext } from '../../context/authContext'
 import { useNavigate } from 'react-router-dom'
+import BASE_URL from '../../utils/config'
+import { AuthContext } from '../../context/AuthContext'
 
-const Profile = ({user}) => {
+const Profile = () => {
   const navigate = useNavigate();
-  const {dispatch} = useContext(AuthContext)
-  const [pic, setPic] = useState('')
-  const handlePhoto = async(e) => {
-    try {
-      const file = e.target.files[0]
-        const base64 = await convertToBase64(file);
-        setPic(base64);
+  const {user, token, dispatch} = useContext(AuthContext)
+  // const [pic, setPic] = useState('')
+  console.log(user)
+//   const handlePhoto = async(e) => {
+//     try {
+//       const file = e.target.files[0]
+//         const base64 = await convertToBase64(file);
+//         setPic(base64);
         
-        setFormData(prevFormData => ({ ...prevFormData, photo: base64 }))
-    } catch (error) {
-        console.error("Error converting to Base64:");
-    }
-}
-    // const [URL, setURL] = useState('')
+//         setFormData(prevFormData => ({ ...prevFormData, photo: base64 }))
+//     } catch (error) {
+//         console.error("Error converting to Base64:");
+//     }
+// }
+    
     const [formData, setFormData] = useState({
-      name: '',
+      username: '',
       email: '',
-      password: '',
-      photo: pic,
-      gender:'',
-      role:'',
-      bloodType: ''
+      photo: ''
     })
     
     useEffect(() => {
-      setFormData({name:user.name, role:user.role, email:user.email, photo:user.photo, gender:user.gender, bloodType:user.bloodType})
+      setFormData({username:user.username, email:user.email, photo: ''})
       
     }, [user])
 
@@ -41,8 +37,6 @@ const Profile = ({user}) => {
         setFormData({...formData, [e.target.name]:e.target.value})
         
       }
-
-
 
   const submitHandler = async (e) => {
     e.preventDefault()
@@ -57,14 +51,16 @@ const Profile = ({user}) => {
         body: JSON.stringify(formData),
       });
       const {message} = await response.json();
-  
+      
       if (response.ok) {
-        
+        // dispatch({type: "LOGIN_START"})
         dispatch({type: "UPDATE_USER", 
         payload: {
           user: response.data,
-          token: response.token,
+          token: response.token
         }})
+        // window.location.reload()
+        navigate('/login')        
         toast.success(message)  
       } else{
         toast.error(message)
@@ -76,30 +72,15 @@ const Profile = ({user}) => {
 
   return (
     <div className='mt-6'>
+     
        <form action="" onSubmit={submitHandler}>
           <div className='my-4'>
-            <input type="text" placeholder='Name' name='name' value={formData.name} onChange={handleInput}
+            <input type="text" placeholder='Name' name='username' value={formData.username} onChange={handleInput}
             required className='w-full px-4 py-3 focus:outline-none border-b border-solid focus:border-b-Color' />
           </div>
           <div className='my-4'>
             <input type="email" placeholder='Email' name='email' value={formData.email} onChange={handleInput}
             required className='w-full px-4 py-3 focus:outline-none border-b border-solid focus:border-b-Color' />
-          </div>
-          <div className='my-4'>
-            <input type="text" placeholder='Blood Group' name='bloodType' value={formData.bloodType} onChange={handleInput}
-            required className='w-full px-4 py-3 focus:outline-none border-b border-solid focus:border-b-Color' />
-          </div>
-
-          <div className='flex items-center justify-between mb-3'>
-            <label htmlFor="" className='text-TextColor font-bold text-[15px] leading-7 px-4'>
-              Gender 
-              <select name="gender" value={formData.gender} onChange={handleInput} className='text-TextColor  text-[15px] leading-7 px-4 py-3 focus:outline-none' >
-                <option value="select">Select</option>
-                <option value="male">Male</option>
-                <option value="female">Female</option>
-                <option value="other">Other</option>
-              </select>
-            </label>
           </div>
 
           <div className='mb-1 flex items-center gap-3'>
@@ -107,9 +88,9 @@ const Profile = ({user}) => {
               <img src={user.photo} alt="" className='w-full rounded-full' />
             </figure>}
 
-            <div className='relative w-[120px] h-[40px]'>
+            <div className='relative w-[120px] h-[40px] my-4'>
               <input className='absolute top-0 left-0 w-full h-full opacity-0 cursor-pointer'
-              type="file" name='photo' id='customFile' accept='.png, .jpg, .jpeg' onChange={handlePhoto} />
+              type="file"  id='customFile' accept='.png, .jpg, .jpeg'  />
             
               <label htmlFor="customFile" className='absolute top-0 left-0 w-full h-full flex items-center
               px-[.75rem] py-[.375rem] text-center text-[15px] leading-6 overflow-hidden cursor-pointer text-HeadingColor font-semibold rounded-lg truncate bg-blue-100' >Upload Photo</label>
@@ -117,7 +98,7 @@ const Profile = ({user}) => {
           </div>
 
           <div>
-            <button className="btn w-full rounded-md">Update Now</button>
+            <button className="Searchbtn w-full rounded-md">Update Now</button>
           </div>
         </form>
     </div>

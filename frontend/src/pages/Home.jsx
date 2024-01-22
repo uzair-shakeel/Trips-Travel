@@ -56,7 +56,7 @@ const Home = () => {
       <section className='pb-12 px-12 '>
        <div className="container mx-auto mt-8 flex">
       <div className="mb-6 flex-shrink-0 mx-4 flex-1 min-w-[30%]">
-        <h2 className="text-[38px]  font-bold mb-4 text-BaseColor ">Our Best Services</h2>
+        <h2 className="text-[38px]  font-bold mb-4 text-BaseColor heading" >Our Best Services</h2>
         <p className='text-xl leading-7 '>"Empowering Your Journey: Unrivaled Services Tailored to Elevate Your Experience."</p>
         {/* Add Slider Component or Carousel Component if needed */}
       </div>
