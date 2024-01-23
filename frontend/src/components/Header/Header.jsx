@@ -5,11 +5,9 @@ import { AuthContext } from '../../context/AuthContext';
 import { toast } from 'react-toastify';
 
 const Header = () => {
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
   const headerRef = useRef(null);
   const navigate = useNavigate();
-  const {user, dispatch} = useContext(AuthContext);
-
+  const {user, dispatch, role} = useContext(AuthContext);
   
   const handleLogout = () => {
     dispatch({type: "LOGOUT"})
@@ -34,19 +32,37 @@ const Header = () => {
       window.removeEventListener('scroll', handleScroll);
     };
   }, []);
-
+  
+  
   return (
     <header ref={headerRef} className=" transition-all duration-300">
       <nav className="container mx-auto flex justify-between items-center py-4">
+        
+        {role === "admin" 
+        ? 
+        null 
+        :
         <div className="h-16">
           <img src={Logo} alt="" className="h-full" />
         </div>
-        <ul className="flex space-x-4">
+        }
+
+        {role === "admin" ? 
+        <ul className="flex space-x-8">
+        <Link to='/all-booking' className='font-bold text-lg text-GrayColor hover:text-black'>Bookings</Link>
+        <Link to='/all-tours' className='font-bold text-lg text-GrayColor hover:text-black'>Tours</Link>
+        <Link to='/create' className='font-bold text-lg text-GrayColor hover:text-black'>Create</Link>
+        
+      </ul>
+      :
+      <ul className="flex space-x-4">
           <Link to='/home'>Home</Link>
           <Link to='/tours'>Tours</Link>
           <Link to='/about'>Gallery</Link>
           <Link to='/contact'>Contact</Link>
         </ul>
+        }
+        
         <div>
           {user ? (
             <div className='flex gap-3 items-center'>

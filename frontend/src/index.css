@@ -103,6 +103,57 @@ h3{
     color: white;
     transition: .5s;
  }
+ 
+ .Bluebtn{
+    padding: 10px 25px;
+    font-weight: 600;
+    background: #1c8bb7;
+    border-radius: 6px;
+    color: white;
+    transition: .5s;
+ }
+ .Bluebtn:hover{
+    padding: 10px 25px;
+    font-weight: 700;
+    background:  #12749b;
+    border-radius: 10px;
+    color: white;
+    transition: .5s;
+ }
+ .Redbtn{
+    padding: 10px 25px;
+    font-weight: 600;
+    background: #D32F2F;
+    border-radius: 6px;
+    color: white;
+    transition: .5s;
+ }
+ .Redbtn:hover{
+    padding: 10px 25px;
+    font-weight: 700;
+    background:  #B71C1C;
+    border-radius: 10px;
+    color: white;
+    transition: .5s;
+ }
+ .Greenbtn{
+    padding: 10px 25px;
+    font-weight: 600;
+    background: #388E3C;
+    border-radius: 6px;
+    color: white;
+    transition: .5s;
+ }
+ .Greenbtn:hover{
+    padding: 10px 25px;
+    font-weight: 700;
+    background:  #2b7a2f;
+    border-radius: 10px;
+    color: white;
+    transition: .5s;
+ }
+
+
  .noCbtn{
    padding: 10px 25px;
    font-weight: 600;
@@ -152,4 +203,8 @@ h3{
 .tableData{
    padding: 7px 14px;
    
+}
+
+.tdFont{
+   font-size: 14px;
 }

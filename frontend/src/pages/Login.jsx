@@ -33,7 +33,6 @@ const [isLoading, setIsLoading] = useState(false);
         body: JSON.stringify(formData),
       });
       const result = await response.json();
-      console.log(result);
       
       if (response.ok) {
         
@@ -46,7 +45,7 @@ const [isLoading, setIsLoading] = useState(false);
         }
       })
         toast.success(result.message)
-        navigate('/home')
+        navigate('/')
       } else{
         toast.error(result.message)
       }

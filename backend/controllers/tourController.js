@@ -35,7 +35,7 @@ const createTour = async (req, res) => {
     const newTour = new Tour({ title, city, photo, desc, maxGroupSize, address, distance, price });
     await newTour.save();
 
-    res.status(201).json({ message: 'Tour created successfully', newTour });
+    res.status(201).json({ message: 'Tour created successfully', data: newTour });
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: 'Internal Server Error' });

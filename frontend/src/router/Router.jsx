@@ -10,12 +10,19 @@ import About from '../pages/About'
 import Contact from '../pages/Contact'
 import Booked from '../pages/Booked'
 import MyAccount from '../Dashboard/UserAccount/MyAccount'
+import Bookings from '../Dashboard/AdminPanel/Bookings'
+import AdminTours from '../Dashboard/AdminPanel/AdminTours'
+import CreateTours from '../Dashboard/AdminPanel/CreateTours'
+
 const Router = () => {
   return (
     <Routes>
         <Route path='/' element={<Navigate to='/home' />} />
         <Route path='/home' element={<Home />} />
         <Route path='/my-account' element={<MyAccount />} />
+        <Route path='/all-booking' element={<Bookings />} />
+        <Route path='/all-tours' element={<AdminTours />} />
+        <Route path='/create' element={<CreateTours />} />
         <Route path='/login' element={<Login />} />
         <Route path='/register' element={<Register />} />
         <Route path='/tours' element={<Tours />} />

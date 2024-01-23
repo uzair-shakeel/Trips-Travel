@@ -9,7 +9,6 @@ import {toast} from 'react-toastify'
 import useFetch from '../hooks/useFetch';
 import BASE_URL from "../utils/config";
 import { AuthContext } from "../context/AuthContext";
-import Img1 from'../assets/images/tour-img01.jpg'
 
 const TourDetails = () => {
   const {user} = useContext(AuthContext);

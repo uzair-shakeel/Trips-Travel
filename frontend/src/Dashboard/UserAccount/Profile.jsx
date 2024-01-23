@@ -8,7 +8,6 @@ const Profile = () => {
   const navigate = useNavigate();
   const {user, token, dispatch} = useContext(AuthContext)
   // const [pic, setPic] = useState('')
-  console.log(user)
 //   const handlePhoto = async(e) => {
 //     try {
 //       const file = e.target.files[0]

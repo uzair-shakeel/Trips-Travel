@@ -1,11 +1,18 @@
 import Logo from './../../assets/images/logo3.png';
-import React, {useState} from 'react';
+import React, {useContext, useState} from 'react';
 import { FaFacebookF, FaTwitter, FaInstagram, FaYoutube, FaGithub } from 'react-icons/fa';
 import Newsletter from '../../shared/Newsletter';
+import { AuthContext } from '../../context/AuthContext';
 
 const Footer = () => {
-
+  const {role} = useContext(AuthContext)
+  
   return (
+    <>
+    {role === "admin" 
+    ? 
+    null 
+    :
     <footer className="bg-gray-800 text-white py-8">
       <div className="container mx-auto flex flex-col md:flex-row justify-between items-center">
         
@@ -52,6 +59,8 @@ const Footer = () => {
 
       </div>
     </footer>
+  }
+  </>
   );
 };
 
