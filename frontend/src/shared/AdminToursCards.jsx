@@ -1,11 +1,41 @@
-import React from 'react'
+import React, { useState } from 'react'
 import BASE_URL from '../utils/config';
 import useFetch from '../hooks/useFetch';
 import {toast} from 'react-toastify'
+import UpdateTours from '../Dashboard/AdminPanel/UpdateTour';
+import { Link } from 'react-router-dom';
+
+
+
 
 const AdminToursCards = ({tour}) => {
-    const {title,city, address, price, maxGroupSize, desc,featured,reviews, updatedAt, photo, _id} = tour;
+  const [update, setUpdate] = useState(false);
+  const {title,city, address, price, maxGroupSize, desc,featured,reviews, updatedAt, photo, _id} = tour;
+
+  const deleteTour = async()=> {
+    try {
+      const response = await fetch(`${BASE_URL}/tour/${_id}`, {
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`
+        }
+      });
+      const {message} = await response.json();
+  
+      if (!response.ok) {
+        toast.error(message)
+      } else{
+        toast.success(message)
+        // window.location.reload();
+      }
+  } catch(err){
+    toast.error("Server not responding")
     
+  }
+  
+  }
+  
   
     return (
       <>
@@ -20,8 +50,8 @@ const AdminToursCards = ({tour}) => {
                     <td className='tdFont'>{maxGroupSize}</td>
                     <td className='tdFont'>{reviews.length}</td>
                     <td ><button  className='Greenbtn  my-2 mx-2 '>View</button></td>
-                    <td ><button  className='Bluebtn  my-2 mx-2 '>Update</button></td>
-                    <td ><button  className='Redbtn my-2 mx-2 '>Delete</button></td>
+                    <td ><Link to={`/update-tour?tour=${tour._id}`} className='Bluebtn  my-2 mx-2 '>Update</Link></td>
+                    <td ><button onClick={deleteTour} className='Redbtn my-2 mx-2 '>Delete</button></td>
                   </tr>
                 
               </tbody>

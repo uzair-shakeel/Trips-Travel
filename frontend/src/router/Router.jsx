@@ -13,6 +13,7 @@ import MyAccount from '../Dashboard/UserAccount/MyAccount'
 import Bookings from '../Dashboard/AdminPanel/Bookings'
 import AdminTours from '../Dashboard/AdminPanel/AdminTours'
 import CreateTours from '../Dashboard/AdminPanel/CreateTours'
+import UpdateTours from '../Dashboard/AdminPanel/UpdateTour'
 
 const Router = () => {
   return (
@@ -22,6 +23,7 @@ const Router = () => {
         <Route path='/my-account' element={<MyAccount />} />
         <Route path='/all-booking' element={<Bookings />} />
         <Route path='/all-tours' element={<AdminTours />} />
+        <Route path='/update-tour' element={<UpdateTours />} />
         <Route path='/create' element={<CreateTours />} />
         <Route path='/login' element={<Login />} />
         <Route path='/register' element={<Register />} />

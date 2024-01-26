@@ -17,6 +17,8 @@ const AdminTours = () => {
     window.scrollTo(0,0)
   }, [page, tourCount, tours])
 
+  
+
 
 
   return (
