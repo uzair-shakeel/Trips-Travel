@@ -49,8 +49,8 @@ const AdminToursCards = ({tour}) => {
                     <td className='tdFont'>{featured}</td>
                     <td className='tdFont'>{maxGroupSize}</td>
                     <td className='tdFont'>{reviews.length}</td>
-                    <td ><button  className='Greenbtn  my-2 mx-2 '>View</button></td>
-                    <td ><Link to={`/update-tour?tour=${tour._id}`} className='Bluebtn  my-2 mx-2 '>Update</Link></td>
+                    <td ><Link to={`/tours/${tour._id}`} className='Greenbtn  my-2 mx-2 '>View</Link></td>
+              <td ><Link to={`/update-tour/${tour._id}`} className='Bluebtn  my-2 mx-2 '>Update</Link></td>
                     <td ><button onClick={deleteTour} className='Redbtn my-2 mx-2 '>Delete</button></td>
                   </tr>
                 

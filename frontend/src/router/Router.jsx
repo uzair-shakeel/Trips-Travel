@@ -23,7 +23,7 @@ const Router = () => {
         <Route path='/my-account' element={<MyAccount />} />
         <Route path='/all-booking' element={<Bookings />} />
         <Route path='/all-tours' element={<AdminTours />} />
-        <Route path='/update-tour' element={<UpdateTours />} />
+        <Route path='/update-tour/:id' element={<UpdateTours />} />
         <Route path='/create' element={<CreateTours />} />
         <Route path='/login' element={<Login />} />
         <Route path='/register' element={<Register />} />
