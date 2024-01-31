@@ -28,9 +28,11 @@ const SearchTours = () => {
 
   return (
     <div>
-      <section className="pb-8">
+      <section className="pb-8 px-6 md:px-12">
         <div className="container text-center">
-          <h2 className="heading">Find a Tour</h2>
+          <h2 className="text-[30px] md:text-[40px]  font-bold mb-4 text-center">
+            Find a <span className="text-BaseColor">Tour</span>
+          </h2>
           <div className="max-w-[570px] mt-[15px] mx-auto bg-gray-100  rounded-md flex items-center justify-between">
             <input
               type="search"
@@ -44,15 +46,6 @@ const SearchTours = () => {
             >
               Search
             </button>
-          </div>
-          <div className="max-w-[300px] mt-[15px] mx-auto">
-            <input
-              type="range"
-              className="transparent h-1.5 w-full cursor-pointer appearance-none rounded-lg border-transparent bg-neutral-200"
-              min="1000"
-              max="10000"
-              id="customRange2"
-            />
           </div>
         </div>
       </section>

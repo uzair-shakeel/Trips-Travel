@@ -1,210 +1,213 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-@import url('https://fonts.googleapis.com/css2?family=Kanit:wght@200;300;500&family=Outfit:wght@100;300;400;600&family=Roboto:wght@300;400;500;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Satisfy&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Kanit:wght@200;300;500&family=Outfit:wght@100;300;400;600&family=Roboto:wght@300;400;500;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Satisfy&display=swap");
 
-*{
-   padding: 0;
-   margin: 0;
-   /* font-family: 'Kanit', sans-serif; */
-/* font-family: 'Outfit', sans-serif; */
-font-family: 'Roboto', sans-serif;
+* {
+  padding: 0;
+  margin: 0;
+  /* font-family: 'Kanit', sans-serif; */
+  /* font-family: 'Outfit', sans-serif; */
+  font-family: "Roboto", sans-serif;
 }
 
-.heading{
-    font-size: 45px;
-    font-family: 'Satisfy', "cursive";
-    color: #B71C1C;
-    font-weight: bold;
-    text-align: center;
-
-}
-h2{
-    font-size: 40px;
+.mobpara {
+  font-size: 15px;
+  color: #2d3748;
+  text-align: center;
 }
 
-h3{
-   font-size: 32px;
-   font-weight: 600;
-   padding-top: 30px;
-   }
-
-.para{
-    color: rgb(75, 75, 75);
-    width: full;
-    padding-bottom: 40px;
-    text-align: center;
+.mobheading {
+  font-size: 25px;
+  color: #b71c1c;
+  font-weight: bold;
+  text-align: center;
 }
 
+.heading {
+  font-size: 45px;
+  /* font-family: "Satisfy", "cursive"; */
+  color: #b71c1c;
+  font-weight: bold;
+  text-align: center;
+}
+h2 {
+  font-size: 40px;
+}
+
+h3 {
+  font-size: 32px;
+  font-weight: 600;
+  padding-top: 30px;
+}
+
+.para {
+  color: rgb(75, 75, 75);
+  width: full;
+  padding-bottom: 40px;
+  text-align: center;
+}
 
 .form_label {
-    font: bold;
-    font-size: 16px;
-    margin-bottom: 2px;
-
-   }
-
- .form_input {
-    width: 100%;
-    padding: 8px 12px;
-    font-size: 16px;
-    border-bottom: 1px solid #B71C1C;
-
- } 
- .form_input:focus {
-    
-    outline: none;
- } 
-
- .booking_input{
-    width: 100%;
-    border-radius: 3px;
-    padding: 10px 14px;
-    font-size: 16px;
-    margin-bottom: 8px;
-    border-bottom: 1px solid black;
-
- } 
- .booking_input:focus{
-    
-    outline: none;
- } 
-
- .btn{
-    padding: 10px 25px;
-    font-weight: 600;
-    background: #B71C1C;
-    border-radius: 6px;
-    color: white;
-    transition: .5s;
- }
- .btn:hover{
-    padding: 10px 25px;
-    font-weight: 600;
-    background: #D32F2F;
-    border-radius: 20px;
-    color: white;
-    transition: .5s;
- }
- .Searchbtn{
-    padding: 10px 25px;
-    font-weight: 600;
-    background: #1c8bb7;
-    border-radius: 6px;
-    color: white;
-    transition: .5s;
- }
- .Searchbtn:hover{
-    padding: 10px 45px;
-    font-weight: 700;
-    background: #12749b;
-    border-radius: 10px;
-    color: white;
-    transition: .5s;
- }
- 
- .Bluebtn{
-    padding: 10px 25px;
-    font-weight: 600;
-    background: #1c8bb7;
-    border-radius: 6px;
-    color: white;
-    transition: .5s;
- }
- .Bluebtn:hover{
-    padding: 10px 25px;
-    font-weight: 700;
-    background:  #12749b;
-    border-radius: 10px;
-    color: white;
-    transition: .5s;
- }
- .Redbtn{
-    padding: 10px 25px;
-    font-weight: 600;
-    background: #D32F2F;
-    border-radius: 6px;
-    color: white;
-    transition: .5s;
- }
- .Redbtn:hover{
-    padding: 10px 25px;
-    font-weight: 700;
-    background:  #B71C1C;
-    border-radius: 10px;
-    color: white;
-    transition: .5s;
- }
- .Greenbtn{
-    padding: 10px 25px;
-    font-weight: 600;
-    background: #388E3C;
-    border-radius: 6px;
-    color: white;
-    transition: .5s;
- }
- .Greenbtn:hover{
-    padding: 10px 25px;
-    font-weight: 700;
-    background:  #2b7a2f;
-    border-radius: 10px;
-    color: white;
-    transition: .5s;
- }
-
-
- .noCbtn{
-   padding: 10px 25px;
-   font-weight: 600;
-   border-radius: 6px;
-   color: white;
-   transition: .5s;
- }
- 
- .noCbtn:hover{
-   padding: 10px 25px;
-   font-weight: 600;
-   border-radius: 20px;
-   color: white;
-   transition: .5s;
- }
-
- .spn{
-    width: 2rem;
-    height: 2rem;
-    padding: 5px;
-    border: 1px solid black;
-    border-radius: 50px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    font-weight: 700;
-    font-size: 1.1rem;
- }
-
- .active_page{
-    background: #B71C1C;
-    color: white;
-    width: 2rem;
-    height: 2rem;
-    padding: 5px;
-    border-radius: 50px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    font-weight: 700;
-    font-size: 1.1rem;
-    
- }
-
-.tableData{
-   padding: 7px 14px;
-   
+  font: bold;
+  font-size: 16px;
+  margin-bottom: 2px;
 }
 
-.tdFont{
-   font-size: 14px;
+.form_input {
+  width: 100%;
+  padding: 8px 12px;
+  font-size: 16px;
+  border-bottom: 1px solid #b71c1c;
+}
+.form_input:focus {
+  outline: none;
+}
+
+.booking_input {
+  width: 100%;
+  border-radius: 3px;
+  padding: 10px 14px;
+  font-size: 16px;
+  margin-bottom: 8px;
+  border-bottom: 1px solid black;
+}
+.booking_input:focus {
+  outline: none;
+}
+
+.btn {
+  padding: 10px 25px;
+  font-weight: 600;
+  background: #b71c1c;
+  border-radius: 6px;
+  color: white;
+  transition: 0.5s;
+}
+.btn:hover {
+  padding: 10px 25px;
+  font-weight: 600;
+  background: #d32f2f;
+  border-radius: 20px;
+  color: white;
+  transition: 0.5s;
+}
+.Searchbtn {
+  padding: 10px 25px;
+  font-weight: 600;
+  background: #1c8bb7;
+  border-radius: 6px;
+  color: white;
+  transition: 0.5s;
+}
+.Searchbtn:hover {
+  padding: 10px 45px;
+  font-weight: 700;
+  background: #12749b;
+  border-radius: 10px;
+  color: white;
+  transition: 0.5s;
+}
+
+.Bluebtn {
+  padding: 10px 25px;
+  font-weight: 600;
+  background: #1c8bb7;
+  border-radius: 6px;
+  color: white;
+  transition: 0.5s;
+}
+.Bluebtn:hover {
+  padding: 10px 25px;
+  font-weight: 700;
+  background: #12749b;
+  border-radius: 10px;
+  color: white;
+  transition: 0.5s;
+}
+.Redbtn {
+  padding: 10px 25px;
+  font-weight: 600;
+  background: #d32f2f;
+  border-radius: 6px;
+  color: white;
+  transition: 0.5s;
+}
+.Redbtn:hover {
+  padding: 10px 25px;
+  font-weight: 700;
+  background: #b71c1c;
+  border-radius: 10px;
+  color: white;
+  transition: 0.5s;
+}
+.Greenbtn {
+  padding: 10px 25px;
+  font-weight: 600;
+  background: #388e3c;
+  border-radius: 6px;
+  color: white;
+  transition: 0.5s;
+}
+.Greenbtn:hover {
+  padding: 10px 25px;
+  font-weight: 700;
+  background: #2b7a2f;
+  border-radius: 10px;
+  color: white;
+  transition: 0.5s;
+}
+
+.noCbtn {
+  padding: 10px 25px;
+  font-weight: 600;
+  border-radius: 6px;
+  color: white;
+  transition: 0.5s;
+}
+
+.noCbtn:hover {
+  padding: 10px 25px;
+  font-weight: 600;
+  border-radius: 20px;
+  color: white;
+  transition: 0.5s;
+}
+
+.spn {
+  width: 2rem;
+  height: 2rem;
+  padding: 5px;
+  border: 1px solid black;
+  border-radius: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+
+.active_page {
+  background: #b71c1c;
+  color: white;
+  width: 2rem;
+  height: 2rem;
+  padding: 5px;
+  border-radius: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+
+.tableData {
+  padding: 7px 14px;
+}
+
+.tdFont {
+  font-size: 14px;
 }

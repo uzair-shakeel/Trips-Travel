@@ -3,11 +3,14 @@ import Logo from "./../../assets/images/logo3.png";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
 import { toast } from "react-toastify";
+import { BiMenu } from "react-icons/bi";
+import { IoClose } from "react-icons/io5";
 
 const Header = () => {
   const headerRef = useRef(null);
   const navigate = useNavigate();
   const { user, dispatch, role } = useContext(AuthContext);
+  const [isMenuOpen, setMenuOpen] = useState(false);
 
   const handleLogout = () => {
     dispatch({ type: "LOGOUT" });
@@ -49,38 +52,67 @@ const Header = () => {
     };
   }, []);
 
+  const handleMenuToggle = () => {
+    setMenuOpen(!isMenuOpen);
+  };
+
   return (
-    <header ref={headerRef} className=" transition-all duration-300">
+    <header ref={headerRef} className="transition-all duration-300">
       <nav className="container mx-auto px-5 flex justify-between items-center py-4">
         {role === "admin" ? null : (
-          <div className="h-16">
+          <div className="h-10 md:h-16">
             <img src={Logo} alt="" className="h-full" />
           </div>
         )}
 
+        <div className="md:hidden">
+          <BiMenu
+            className="w-8 h-8 cursor-pointer"
+            onClick={handleMenuToggle}
+          />
+        </div>
+
+        {isMenuOpen && (
+          <div className="md:hidden fixed text-center top-0 h-screen right-0 w-2/3 bg-gray-100 duration-300 p-4 shadow-md">
+            <IoClose
+              className="w-8 h-8 cursor-pointer absolute top-4 right-0 mr-6 text-gray-600 hover:text-black"
+              onClick={handleMenuToggle}
+            />
+            <ul className="flex flex-col item-center h-full justify-center gap-10">
+              <Link to="/home" onClick={handleMenuToggle}>
+                Home
+              </Link>
+              <Link to="/tours" onClick={handleMenuToggle}>
+                Tours
+              </Link>
+              <Link to="/about" onClick={handleMenuToggle}>
+                Gallery
+              </Link>
+              <Link to="/contact" onClick={handleMenuToggle}>
+                Contact
+              </Link>
+              <div className="flex items-center justify-center gap-4">
+                <Link to="/login" onClick={handleMenuToggle}>
+                  <button className="text-BaseColor rounded hover:text-BHoverColor">
+                    Login
+                  </button>
+                </Link>
+                <Link to="/register" onClick={handleMenuToggle}>
+                  <button className="btn">Register</button>
+                </Link>
+              </div>
+            </ul>
+          </div>
+        )}
+
         {role === "admin" ? (
-          <ul className="flex space-x-8">
-            <Link
-              to="/all-booking"
-              className="font-bold text-lg text-GrayColor hover:text-black"
-            >
-              Bookings
-            </Link>
-            <Link
-              to="/all-tours"
-              className="font-bold text-lg text-GrayColor hover:text-black"
-            >
-              Tours
-            </Link>
-            <Link
-              to="/create"
-              className="font-bold text-lg text-GrayColor hover:text-black"
-            >
-              Create
-            </Link>
+          <ul className="md:flex hidden space-x-8">
+            <Link to="/all-booking">Bookings</Link>
+            <Link to="/all-tours">Tours</Link>
+            <Link to="/create">Create</Link>
           </ul>
         ) : (
-          <ul className="flex space-x-4">
+          <ul className="md:flex hidden space-x-4">
             <Link to="/home">Home</Link>
             <Link to="/tours">Tours</Link>
             <Link to="/about">Gallery</Link>
@@ -88,12 +120,12 @@ const Header = () => {
           </ul>
         )}
 
-        <div>
+        <div className="md:flex hidden items-center space-x-4">
           {user ? (
             <div className="flex gap-3 items-center">
               <Link
                 className="text-[18px] font-semibold text-BaseColor rounded hover:text-BHoverColor cursor-pointer"
-                to="/my-account"
+                to={role === "admin" ? "/" : "/my-account"}
               >
                 {user.username}
               </Link>

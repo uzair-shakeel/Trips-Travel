@@ -74,7 +74,7 @@ const Profile = () => {
   };
 
   return (
-    <div className="mt-6">
+    <div className="py-8">
       <form action="" onSubmit={submitHandler}>
         <div className="my-4">
           <input
