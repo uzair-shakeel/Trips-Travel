@@ -5,6 +5,7 @@ import { IoIosSearch } from "react-icons/io";
 import { toast } from "react-toastify";
 import BASE_URL from "../../utils/config";
 import { useNavigate } from "react-router-dom";
+import "./SeachhBar.css";
 
 const SearchBar = () => {
   const minPriceRef = useRef(0);
@@ -41,50 +42,58 @@ const SearchBar = () => {
   };
 
   return (
-    <form className="mt-2 md:mt-8 px-6 flex items-center lg:justify-start justify-center md:flex-row flex-col gap-2">
-      <div className="overflow-hidden">
-        <div className="flex gap-2 items-center">
-          <FaPeopleGroup className="h-3 w-3 lg:h-6 lg:w-6" />
-          <h1 className="font-semibold ">Location</h1>
-        </div>
-        <input
-          type="text"
-          ref={cityRef}
-          className="py-2 my-2 px-4 bg-gray-200 focus:outline-none rounded-full "
-          placeholder="where?"
-        />
+    <div>
+      <div className="search-bar">
+        <form className="form md:flex hidden items-center gap-4">
+          <div className="form-group flex gap-3 md:form-group-fast">
+            <span>
+              <i>
+                <FaPeopleGroup />
+              </i>
+            </span>
+            <div>
+              <h6>Location</h6>
+              <input
+                type="text"
+                placeholder="Where are you going?"
+                ref={cityRef}
+              />
+            </div>
+          </div>
+          <div className="form-group flex gap-3 md:form-group-fast">
+            <span>
+              <i>
+                <IoIosPricetags />
+              </i>
+            </span>
+            <div>
+              <h6>Min Price</h6>
+              <input type="number" placeholder="Mn. Price" ref={minPriceRef} />
+            </div>
+          </div>
+          <div className="form-group flex gap-3 form-group-last">
+            <span>
+              <i>
+                <IoIosPricetags />
+              </i>
+            </span>
+            <div>
+              <h6>Max Price</h6>
+              <input type="number" placeholder="Max Price" ref={maxPriceRef} />
+            </div>
+          </div>
+          <span
+            className="search-icon bg-BaseColor rounded-lg cursor-pointer py-2 px-2"
+            type="submit"
+            onClick={SubmitHandler}
+          >
+            <i>
+              <IoIosSearch size={30} className="text-white" />
+            </i>
+          </span>
+        </form>
       </div>
-      <div className="overflow-hidden ">
-        <div className="flex gap-2 items-center">
-          <IoIosPricetags className="h-3 w-3 lg:h-6 lg:w-6" />
-          <h1 className="font-semibold ">Min. Price</h1>
-        </div>
-        <input
-          type="number"
-          ref={minPriceRef}
-          className="py-2 my-2 px-4 bg-gray-200 focus:outline-none rounded-full "
-          placeholder="min. Amount"
-        />
-      </div>
-      <div className="overflow-hidden">
-        <div className="flex gap-2 items-center">
-          <IoIosPricetags className="h-3 w-3 lg:h-6 lg:w-6" />
-          <h1 className="font-semibold ">Max. Price</h1>
-        </div>
-        <input
-          type="number"
-          ref={maxPriceRef}
-          className="py-2 my-2 px-4 bg-gray-200 focus:outline-none rounded-full "
-          placeholder="max. Amount"
-        />
-      </div>
-      <div className="">
-        <IoIosSearch
-          onClick={SubmitHandler}
-          className="h-10 w-10 cursor-pointer text-BaseColor hover:text-BHoverColor hover:h-12 hover:w-12 duration-300"
-        />
-      </div>
-    </form>
+    </div>
   );
 };
 

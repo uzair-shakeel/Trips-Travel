@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import Masonry, { ResponsiveMasonry } from "react-responsive-masonry";
-import { MdCancel } from "react-icons/md";
 import Modal from "react-modal";
 import Img01 from "../../assets/images/hero-Img01.jpg";
 import Img02 from "../../assets/images/hero-Img02.jpg";
@@ -42,19 +41,22 @@ const ImagesGallery = () => {
 
       <div className="">
         <Modal
-          className="h-screen m-auto overflow-hidden relative"
+          className="w-screen h-auto md:w-auto md:h-screen m-auto overflow-hidden relative"
           isOpen={selectedImage !== null}
           onRequestClose={closeModal}
           contentLabel="Image Modal"
+          shouldCloseOnOverlayClick={true} // Close on overlay click
+          shouldCloseOnEsc={true} // Close on pressing Esc key
         >
-          <button onClick={closeModal} className=" absolute right-0 top-0 p-6">
-            <MdCancel className="h-8 w-8" />
-          </button>
+          <button
+            onClick={closeModal}
+            className="absolute right-0 top-0 p-6 w-full h-full cursor-pointer"
+          ></button>
           {selectedImage !== null && (
             <img
               src={Images[selectedImage]}
               alt="Full Preview"
-              className="h-screen m-auto "
+              className="w-screen h-auto md:w-auto md:h-screen m-auto"
             />
           )}
         </Modal>

@@ -43,6 +43,7 @@ const Login = () => {
           },
         });
         toast.success(result.message);
+
         {
           role === "admin" ? navigate("/all-booking") : navigate("/");
         }

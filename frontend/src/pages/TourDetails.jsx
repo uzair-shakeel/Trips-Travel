@@ -16,6 +16,11 @@ const TourDetails = () => {
   const [tourRating, setTourRating] = useState();
   const { id } = useParams();
 
+  useEffect(() => {
+    // Scroll to the top when the component mounts
+    window.scrollTo(0, 0);
+  }, []);
+
   const { apiData: tour, error } = useFetch(`${BASE_URL}/tour/${id}`, {
     method: "GET",
   });

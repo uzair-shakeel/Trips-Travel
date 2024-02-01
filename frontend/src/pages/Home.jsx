@@ -25,9 +25,11 @@ const Home = () => {
         <div className="grid md:grid-cols-2 gap-8">
           <div>
             <div className="my-8">
-              <h1 className="text-[30px] text-center md:text-[40px] md:text-start font-bold mb-4 ">
-                Plan Your Perfect Trip with
-                <span className="text-BaseColor">TripsTravel</span>
+              <h1 className="text-[33px] font-cursiveFont text-center md:text-[40px] md:text-start font-bold mb-4 ">
+                Plan Your Perfect Trip with{" "}
+                <span className="text-BaseColor text-[40px] font-cursiveFont">
+                  TripsTravel
+                </span>
               </h1>
               <p className="text-lg leading-8 text-gray-800 hidden md:block">
                 "Welcome to TripsTravel, your go-to destination for
@@ -45,7 +47,7 @@ const Home = () => {
               </p>
             </div>
           </div>
-          <div className="hidden gap-4 md:grid grid-cols-3">
+          <div className="gap-4 grid grid-cols-3 min-h-[200px]">
             <div className="rounded-lg my-8 overflow-hidden">
               <img src={card01} className="object-cover h-full" alt="" />
             </div>
@@ -66,8 +68,11 @@ const Home = () => {
       <section className="pb-12 px-6 md:px-12">
         <div className="container mx-auto mt-8 flex-col flex md:flex-row">
           <div className="mb-6 flex-shrink-0 mx-4 flex-1 min-w-[30%]">
-            <h2 className="text-[30px] md:text-[40px]  font-bold mb-4 text-center">
-              Our <span className="text-BaseColor">Best Services</span>
+            <h2 className="text-[33px] md:text-[40px] font-cursiveFont font-bold mb-4 text-center">
+              Our{" "}
+              <span className="text-BaseColor text-[43px] font-cursiveFont">
+                Best Services
+              </span>
             </h2>
             <p className="para md:text-lg md:leading-8 md:text-start md:text-gray-800">
               "Empowering Your Journey: Unrivaled Services Tailored to Elevate
@@ -81,8 +86,11 @@ const Home = () => {
 
       {/* {Gallery Section Start} */}
       <section className="py-8 text-center px-6 md:px-12">
-        <h1 className="text-[30px] md:text-[40px]  font-bold mb-4 text-center">
-          Our <span className="text-BaseColor">Gallery</span>
+        <h1 className="text-[33px] md:text-[40px] font-cursiveFont font-bold mb-4 text-center">
+          Our{" "}
+          <span className="text-BaseColor text-[40px] font-cursiveFont">
+            Gallery
+          </span>
         </h1>
         <p className="text-lg leading-8 mb-8 text-gray-800">
           "Unveil travel wonders in our gallery, a snapshot of TripsTravel's
@@ -92,7 +100,7 @@ const Home = () => {
       </section>
       {/* {Gallery Section Ends} */}
       <section className="min-h-screen py-8 px-6 md:px-12">
-        <h1 className="text-[30px] md:text-[40px]  font-bold mb-4 text-center text-BaseColor">
+        <h1 className="text-[40px] md:text-[40px] font-cursiveFont font-bold mb-4 text-center text-BaseColor">
           Featured Tours
         </h1>
         <p className="para md:text-lg md:leading-8 md:text-gray-800">
@@ -109,10 +117,13 @@ const Home = () => {
       <section>
         <div className="py-8 px-6 md:px-12">
           <div className="mx-auto text-center xl:w-[470px]">
-            <h1 className="text-[40px]  font-bold  ">
-              Our <span className="text-BaseColor">Reviews</span>
+            <h1 className="text-[33px] md:text-[40px] font-cursiveFont font-bold mb-4 text-center ">
+              Our{" "}
+              <span className="text-BaseColor text-[40px] font-cursiveFont ">
+                Reviews
+              </span>
             </h1>
-            <p className="text-lg leading-8 mb-8 text-gray-800">
+            <p className="text-lg font-paraFont font-bold leading-8 mb-8 text-gray-800">
               "Read what our travelers have to say in their own words. Real
               stories, real experiences."
             </p>
@@ -131,7 +142,7 @@ const Home = () => {
             </div>
 
             <div className="w-full md:w-1/2">
-              <h2 className="text-3xl text-BaseColor font-bold text-center">
+              <h2 className="text-3xl text-BaseColor font-cursiveFont  font-bold text-center">
                 Frequently Asked Question.
               </h2>
 

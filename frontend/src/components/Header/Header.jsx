@@ -19,36 +19,27 @@ const Header = () => {
   };
 
   useEffect(() => {
-    const handleScroll = () => {
-      const scrollY = window.scrollY;
-      const header = headerRef.current;
+    let lastScrollTop = window.pageYOffset;
+    const header = headerRef.current;
 
-      if (scrollY > 20) {
-        header.classList.add(
-          "bg-white",
-          "shadow-md",
-          "fixed",
-          "top-0",
-          "z-20",
-          "left-0",
-          "right-0"
-        );
+    const handleWheel = (event) => {
+      const currentScrollTop = window.pageYOffset;
+
+      if (event.deltaY > 0) {
+        // Scrolling down
+        header.classList.add("hidden");
       } else {
-        header.classList.remove(
-          "bg-white",
-          "shadow-md",
-          "fixed",
-          "top-0",
-          "z-20",
-          "left-0",
-          "right-0"
-        );
+        // Scrolling up
+        header.classList.remove("hidden");
       }
+
+      lastScrollTop = currentScrollTop;
     };
 
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("wheel", handleWheel);
+
     return () => {
-      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("wheel", handleWheel);
     };
   }, []);
 
@@ -73,7 +64,7 @@ const Header = () => {
         </div>
 
         {isMenuOpen && (
-          <div className="md:hidden fixed text-center top-0 h-screen right-0 w-2/3 bg-gray-100 duration-300 p-4 shadow-md">
+          <div className="md:hidden fixed text-center top-0 h-screen right-0 w-2/3 bg-gray-100 duration-300 p-4 shadow-md z-40">
             <IoClose
               className="w-8 h-8 cursor-pointer absolute top-4 right-0 mr-6 text-gray-600 hover:text-black"
               onClick={handleMenuToggle}
@@ -125,7 +116,7 @@ const Header = () => {
             <div className="flex gap-3 items-center">
               <Link
                 className="text-[18px] font-semibold text-BaseColor rounded hover:text-BHoverColor cursor-pointer"
-                to={role === "admin" ? "/" : "/my-account"}
+                to={role === "user" && "/my-account"}
               >
                 {user.username}
               </Link>
@@ -155,3 +146,5 @@ const Header = () => {
 };
 
 export default Header;
+
+// ... (previous code)

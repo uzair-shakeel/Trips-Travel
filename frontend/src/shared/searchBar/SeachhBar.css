@@ -1,0 +1,30 @@
+.search-bar {
+  padding: 0.5rem 1rem;
+  border-radius: 50px;
+  box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
+  width: max-content;
+  margin-top: 50px;
+}
+
+.form-group span {
+  font-size: 1.8rem;
+  color: #ee6e6e;
+}
+
+.form-group input {
+  border: none;
+  font-size: 0.9rem;
+  color: BLACK;
+}
+
+.form-group input:focus {
+  outline: none;
+}
+
+.form-group h6 {
+  margin-bottom: 0;
+}
+
+.form-group-fast {
+  border-right: 2px solid #ddd;
+}
