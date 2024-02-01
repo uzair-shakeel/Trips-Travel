@@ -56,7 +56,17 @@ const Header = () => {
           </div>
         )}
 
-        <div className="md:hidden">
+        <div className="flex gap-2 md:hidden">
+          {user ? (
+            <div className="flex gap-3 items-center">
+              <Link
+                className="text-[18px] font-semibold text-BaseColor rounded hover:text-BHoverColor cursor-pointer"
+                to={role === "user" && "/my-account"}
+              >
+                {user.username}
+              </Link>
+            </div>
+          ) : null}
           <BiMenu
             className="w-8 h-8 cursor-pointer"
             onClick={handleMenuToggle}
@@ -82,16 +92,26 @@ const Header = () => {
               <Link to="/contact" onClick={handleMenuToggle}>
                 Contact
               </Link>
-              <div className="flex items-center justify-center gap-4">
-                <Link to="/login" onClick={handleMenuToggle}>
-                  <button className="text-BaseColor rounded hover:text-BHoverColor">
-                    Login
-                  </button>
-                </Link>
-                <Link to="/register" onClick={handleMenuToggle}>
-                  <button className="btn">Register</button>
-                </Link>
-              </div>
+              {user ? (
+                <button
+                  onClick={handleLogout}
+                  className="px-6 py-2 bg-black text-white rounded mx-auto hover:bg-gray-800"
+                >
+                  Logout
+                </button>
+              ) : null}
+              {user ? null : (
+                <div className="flex items-center justify-center gap-4">
+                  <Link to="/login" onClick={handleMenuToggle}>
+                    <button className="text-BaseColor rounded hover:text-BHoverColor">
+                      Login
+                    </button>
+                  </Link>
+                  <Link to="/register" onClick={handleMenuToggle}>
+                    <button className="btn">Register</button>
+                  </Link>
+                </div>
+              )}
             </ul>
           </div>
         )}
@@ -146,5 +166,3 @@ const Header = () => {
 };
 
 export default Header;
-
-// ... (previous code)
