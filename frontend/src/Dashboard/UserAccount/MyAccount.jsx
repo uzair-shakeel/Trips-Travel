@@ -36,7 +36,7 @@ const MyAccount = () => {
 
   return (
     <section>
-      <div className="max-w-[1170px] px-5 mx-auto">
+      <div className="max-w-[1170px] py-4 px-5 mx-auto">
         <div className="grid md:grid-cols-3 gap-10">
           <div className="py-[50px] px-[30px] rounded-md">
             <div className="flex items-center justify-center">

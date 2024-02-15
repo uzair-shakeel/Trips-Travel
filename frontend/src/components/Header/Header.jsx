@@ -48,10 +48,14 @@ const Header = () => {
   };
 
   return (
-    <header ref={headerRef} className="transition-all duration-300">
-      <nav className="container mx-auto px-5 flex justify-between items-center py-4">
-        {role === "admin" ? null : (
-          <div className="h-10 md:h-16">
+    <header ref={headerRef} className="transition-all shadow-md duration-300">
+      <nav className="container mx-auto px-5 flex justify-between items-center py-2">
+        {role === "admin" ? (
+          <div className="h-8 md:h-12 md:hidden">
+            <img src={Logo} alt="" className="h-full" />
+          </div>
+        ) : (
+          <div className="h-8 md:h-12">
             <img src={Logo} alt="" className="h-full" />
           </div>
         )}
@@ -80,18 +84,35 @@ const Header = () => {
               onClick={handleMenuToggle}
             />
             <ul className="flex flex-col item-center h-full justify-center gap-10">
-              <Link to="/home" onClick={handleMenuToggle}>
-                Home
-              </Link>
-              <Link to="/tours" onClick={handleMenuToggle}>
-                Tours
-              </Link>
-              <Link to="/about" onClick={handleMenuToggle}>
-                Gallery
-              </Link>
-              <Link to="/contact" onClick={handleMenuToggle}>
-                Contact
-              </Link>
+              {role !== "admin" && (
+                <>
+                  <Link to="/home" onClick={handleMenuToggle}>
+                    Home
+                  </Link>
+                  <Link to="/tours" onClick={handleMenuToggle}>
+                    Tours
+                  </Link>
+                  <Link to="/about" onClick={handleMenuToggle}>
+                    Gallery
+                  </Link>
+                  <Link to="/contact" onClick={handleMenuToggle}>
+                    Contact
+                  </Link>
+                </>
+              )}
+              {role === "admin" && (
+                <>
+                  <Link to="/all-booking" onClick={handleMenuToggle}>
+                    Bookings
+                  </Link>
+                  <Link to="/all-tours" onClick={handleMenuToggle}>
+                    Tours
+                  </Link>
+                  <Link to="/create" onClick={handleMenuToggle}>
+                    Create
+                  </Link>
+                </>
+              )}
               {user ? (
                 <button
                   onClick={handleLogout}

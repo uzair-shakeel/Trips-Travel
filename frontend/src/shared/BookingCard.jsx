@@ -34,6 +34,12 @@ const BookingCard = ({ booking }) => {
           <td>
             <button
               onClick={deleteBooking}
+              className="block md:hidden noCbtn bg-black my-2 mx-2 hover:bg-gray-900 "
+            >
+              X
+            </button>
+            <button
+              onClick={deleteBooking}
               className="hidden md:block noCbtn bg-black my-2 mx-2 hover:bg-gray-900 "
             >
               Cancel Booking

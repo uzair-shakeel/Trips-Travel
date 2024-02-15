@@ -15,6 +15,12 @@ const BookingCard = ({ booking }) => {
     _id,
   } = booking;
 
+  const setCreatedAt = new Date(createdAt);
+  const newCreatedAt = setCreatedAt.toDateString(); // Get a string representing the date portion
+
+  const booked = new Date(date);
+  const bookedFor = booked.toDateString(); // Get a string representing the date portion
+
   const deleteBooking = async () => {
     try {
       const response = await fetch(`${BASE_URL}/booking/${_id}`, {
@@ -35,21 +41,18 @@ const BookingCard = ({ booking }) => {
 
   return (
     <>
-      <tbody className="rounded overflow-hidden py-8 px-3 bg-gray-100 shadow-lg ">
+      <tbody className="rounded overflow-hidden py-8 px-3 border-b-gray-500 border-b-[1px]   ">
         <tr className="w-full text-center overflow-hidden">
-          <td className="hidden md:table-cell tdFont">{tourName}</td>
-          <td className="tdFont">{fullName}</td>
-          <td className="hidden md:table-cell tdFont">{userId}</td>
-          <td className="hidden md:table-cell tdFont">{maxGroupSize}</td>
-          <td className="hidden md:table-cell tdFont">{phone}</td>
-          <td className="tdFont">{date}</td>
-          <td className="hidden md:table-cell tdFont">{createdAt}</td>
-          <td className="tdFont">{totalPrice}</td>
+          <td className="">{tourName}</td>
+          <td className="">{fullName}</td>
+          <td className="">{userId}</td>
+          <td className="">{maxGroupSize}</td>
+          <td className="">{phone}</td>
+          <td className="">{bookedFor}</td>
+          <td className="">{newCreatedAt}</td>
+          <td className="">{totalPrice}</td>
           <td>
-            <button
-              onClick={deleteBooking}
-              className="hidden md:table-cell Redbtn my-2 mx-2 "
-            >
+            <button onClick={deleteBooking} className="Redbtn my-2 mx-2 ">
               Completed
             </button>
           </td>

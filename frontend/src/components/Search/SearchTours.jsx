@@ -26,9 +26,15 @@ const SearchTours = () => {
     }
   };
 
+  const handleKeyPress = (e) => {
+    if (e.key === "Enter") {
+      SubmitHandler();
+    }
+  };
+
   return (
     <div>
-      <section className="pb-8 px-6 md:px-12">
+      <section className="py-4 px-6 md:px-12">
         <div className="container text-center">
           <h2 className="text-[30px] md:text-[40px]  font-bold mb-4 text-center">
             Find a <span className="text-BaseColor">Tour</span>
@@ -37,6 +43,7 @@ const SearchTours = () => {
             <input
               type="search"
               ref={cityRef}
+              onKeyPress={handleKeyPress}
               className="py-4 pl-4 bg-transparent w-full focus:outline-none  placeholder:text-TextColor"
               placeholder="Search Doctor"
             />

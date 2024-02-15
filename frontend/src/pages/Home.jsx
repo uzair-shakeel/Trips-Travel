@@ -114,7 +114,7 @@ const Home = () => {
       {/* {Featured seactiton ends} */}
 
       {/* {Testimonials section start} */}
-      <section>
+      <section className="max-h-[550px]">
         <div className="py-8 px-6 md:px-12">
           <div className="mx-auto text-center xl:w-[470px]">
             <h1 className="text-[33px] md:text-[40px] font-cursiveFont font-bold mb-4 text-center ">

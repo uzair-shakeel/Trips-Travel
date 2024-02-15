@@ -213,3 +213,8 @@ h3 {
 .tdFont {
   font-size: 14px;
 }
+
+.slick-slide {
+  margin-left: 10px;
+  margin-bottom: 0;
+}

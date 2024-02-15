@@ -41,7 +41,7 @@ const Testimonials = () => {
   ];
 
   var settings = {
-    dots: true,
+    dots: false,
     infinite: true,
     autoplay: true,
     speed: 1000,
@@ -55,7 +55,7 @@ const Testimonials = () => {
           slidesToShow: 2,
           slidesToScroll: 1,
           infinite: true,
-          dots: true,
+          dots: false,
         },
       },
       {

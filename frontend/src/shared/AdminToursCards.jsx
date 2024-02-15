@@ -5,10 +5,13 @@ import { toast } from "react-toastify";
 import UpdateTours from "../Dashboard/AdminPanel/UpdateTour";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
+import { FaEdit, FaRegEdit } from "react-icons/fa";
+import { AiOutlineDelete } from "react-icons/ai";
+import { MdDelete } from "react-icons/md";
 
 const AdminToursCards = ({ tour }) => {
   const { token } = useContext(AuthContext);
-  const [update, setUpdate] = useState(false);
+
   const {
     title,
     city,
@@ -22,6 +25,19 @@ const AdminToursCards = ({ tour }) => {
     photo,
     _id,
   } = tour;
+
+  const handleDelete = () => {
+    // Display a confirmation dialog
+    const isConfirmed = window.confirm(
+      "Are you sure you want to delete this Tour Permanently?"
+    );
+
+    // Check if the user confirmed the action
+    if (isConfirmed) {
+      // Code to delete the item
+      deleteTour();
+    }
+  };
 
   const deleteTour = async () => {
     try {
@@ -59,25 +75,27 @@ const AdminToursCards = ({ tour }) => {
           {/* <td className='tdFont'>{photo}</td> */}
           <td className="tableData text-start">{title}</td>
           <td className="tdFont">{city}</td>
-          <td className="tdFont">{featured}</td>
+          <td className="tdFont">{featured === "true" ? "Yes" : "No"}</td>
           <td className="tdFont">{maxGroupSize}</td>
           <td className="tdFont">{reviews.length}</td>
-          <td>
+          {/* <td>
             <Link to={`/tours/${tour._id}`} className="Greenbtn  my-2 mx-2 ">
               View
             </Link>
-          </td>
-          <td>
+          </td> */}
+          <td className="flex gap-2 w-full my-6">
             <Link
               to={`/update-tour/${tour._id}`}
-              className="Bluebtn  my-2 mx-2 "
+              className="text-blue-500 hover:scale-125 hover:rotate-12 duration-200 hover:text-blue-900"
             >
-              Update
+              <FaEdit size={25} />
             </Link>
-          </td>
-          <td>
-            <button onClick={deleteTour} className="Redbtn my-2 mx-2 ">
-              Delete
+            /
+            <button
+              onClick={handleDelete}
+              className="text-red-500 hover:scale-125 hover:rotate-12 duration-200 hover:text-red-900"
+            >
+              <MdDelete size={25} />
             </button>
           </td>
         </tr>
