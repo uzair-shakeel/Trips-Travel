@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import Masonry, { ResponsiveMasonry } from "react-responsive-masonry";
 import Modal from "react-modal";
-import Img01 from "../../assets/images/hero-Img01.jpg";
-import Img02 from "../../assets/images/hero-Img02.jpg";
+import Img01 from "../../assets/images/hero-img01.jpg";
+import Img02 from "../../assets/images/hero-img02.jpg";
 import Img03 from "../../assets/images/front-02.jpg";
 import Img04 from "../../assets/images/gallery-04.jpg";
 import Img06 from "../../assets/images/gallery-03.jpg";
