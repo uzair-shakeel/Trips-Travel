@@ -8,7 +8,9 @@
     "start": "node server.js",
     "dev": "nodemon server.js",
     "build": "npm i",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "client-install": "cd client && npm install",
+    "client-build": "cd client && npm run build"
   },
   "keywords": [],
   "author": "",
