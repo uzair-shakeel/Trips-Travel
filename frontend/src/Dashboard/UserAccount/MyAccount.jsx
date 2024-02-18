@@ -12,6 +12,15 @@ const MyAccount = () => {
   const [tab, setTab] = useState("bookings");
   const navigate = useNavigate();
 
+  const confirmDelete = async () => {
+    const result = window.confirm(
+      "Are you sure you want to delete your account?"
+    );
+    if (result) {
+      deleteAccount();
+    }
+  };
+
   const deleteAccount = async () => {
     try {
       const response = await fetch(`${BASE_URL}/user/users/${user._id}`, {
@@ -66,7 +75,7 @@ const MyAccount = () => {
                 Update Name
               </button>
               <button
-                onClick={deleteAccount}
+                onClick={confirmDelete}
                 className="w-full bg-black noCbtn hover:bg-gray-900 "
               >
                 Delete Account

@@ -12,7 +12,6 @@ import FeaturedTourList from "../components/featruredTour/FeaturedTourList";
 import { Link } from "react-router-dom";
 import { BsArrowRight } from "react-icons/bs";
 import FaqList from "../components/Faq/FaqList";
-import Testimonial from "../components/Testimonials/Testimonial";
 import Testimonials from "../components/Testimonials/Testimonials";
 import faqImg from "../assets/images/experience.png";
 import ImagesGallery from "../components/Gallery/Gallery";
@@ -114,7 +113,7 @@ const Home = () => {
       {/* {Featured seactiton ends} */}
 
       {/* {Testimonials section start} */}
-      <section className="max-h-[550px]">
+      <section className=" md:max-h-[550px]">
         <div className="py-8 px-6 md:px-12">
           <div className="mx-auto text-center xl:w-[470px]">
             <h1 className="text-[33px] md:text-[40px] font-cursiveFont font-bold mb-4 text-center ">

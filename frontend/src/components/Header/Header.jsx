@@ -14,6 +14,7 @@ const Header = () => {
 
   const handleLogout = () => {
     dispatch({ type: "LOGOUT" });
+    setMenuOpen(!isMenuOpen);
     navigate("/home");
     toast.info("Logged Out");
   };
@@ -52,11 +53,15 @@ const Header = () => {
       <nav className="container mx-auto px-5 flex justify-between items-center py-2">
         {role === "admin" ? (
           <div className="h-8 md:h-12 md:hidden">
-            <img src={Logo} alt="" className="h-full" />
+            <Link to={"/"}>
+              <img src={Logo} alt="" className="h-full" />
+            </Link>
           </div>
         ) : (
           <div className="h-8 md:h-12">
-            <img src={Logo} alt="" className="h-full" />
+            <Link to={"/"}>
+              <img src={Logo} alt="" className="h-full" />
+            </Link>
           </div>
         )}
 
