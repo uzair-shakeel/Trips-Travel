@@ -10,6 +10,20 @@ import Img07 from "../../assets/images/gallery-08.jpg";
 import Img08 from "../../assets/images/gallery-02.jpg";
 import Img09 from "../../assets/images/gallery-01.jpg";
 
+// Override default styles for the modal
+const customStyles = {
+  content: {
+    top: "50%",
+    left: "50%",
+    right: "auto",
+    bottom: "auto",
+    marginRight: "-50%",
+    transform: "translate(-50%, -50%)",
+    maxWidth: "90%", // Adjust as needed
+    maxHeight: "90%", // Adjust as needed
+  },
+};
+
 const ImagesGallery = () => {
   const [selectedImage, setSelectedImage] = useState(null);
 
@@ -24,24 +38,25 @@ const ImagesGallery = () => {
   };
 
   return (
-    <div>
+    <div style={{ display: "flex", justifyContent: "center" }}>
+      {" "}
+      {/* Centering the content */}
       <ResponsiveMasonry columnsCountBreakPoints={{ 350: 1, 768: 3, 992: 4 }}>
         <Masonry gutter="1.5rem">
           {Images.map((item, index) => (
             <img
               key={index}
               src={item}
-              className="w-full m-auto cursor-pointer transition-transform transform-gpu hover:scale-110 block rounded-xl"
+              className="w-full cursor-pointer transition-transform transform-gpu hover:scale-110 block rounded-xl"
               alt=""
               onClick={() => openModal(index)}
             />
           ))}
         </Masonry>
       </ResponsiveMasonry>
-
       <div className="">
         <Modal
-          className="w-screen h-auto md:w-auto md:h-screen m-auto overflow-hidden relative"
+          style={customStyles} // Apply custom styles
           isOpen={selectedImage !== null}
           onRequestClose={closeModal}
           contentLabel="Image Modal"
@@ -50,13 +65,13 @@ const ImagesGallery = () => {
         >
           <button
             onClick={closeModal}
-            className="absolute right-0 top-0 p-6 w-full h-full cursor-pointer"
+            className="absolute top-0 right-0 p-6 cursor-pointer"
           ></button>
           {selectedImage !== null && (
             <img
               src={Images[selectedImage]}
               alt="Full Preview"
-              className="w-screen h-auto md:w-auto md:h-screen m-auto"
+              className="w-auto h-auto max-h-full max-w-full"
             />
           )}
         </Modal>
