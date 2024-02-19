@@ -47,7 +47,7 @@ const tourSchema = new mongoose.Schema(
       type: Boolean,
       default: false,
     },
-    updatedAt: {
+    createdAt: {
       type: Date,
       default: Date.now,
     },
