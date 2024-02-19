@@ -4,7 +4,7 @@ const getAllTours = async (req, res) => {
   const page = parseInt(req.query.page);
   try {
     const tours = await Tour.find()
-      .sort({ timestamps: -1 })
+      .sort({ timestamps: 1 })
       .populate("reviews")
       .skip(page * 12)
       .limit(12);

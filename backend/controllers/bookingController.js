@@ -57,7 +57,7 @@ const getBooking = async (req, res) => {
   try {
     const bookingId = req.params.id;
     const booking = await Booking.find({ userId: bookingId }).sort({
-      timestamps: -1,
+      timestamps: 1,
     });
 
     if (!booking) {
