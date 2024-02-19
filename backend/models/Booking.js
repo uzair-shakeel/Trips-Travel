@@ -1,10 +1,9 @@
 // bookingModel.js
 
-import mongoose from 'mongoose';
+import mongoose from "mongoose";
 
 const bookingSchema = new mongoose.Schema(
   {
-    
     userId: {
       type: String,
       required: true,
@@ -33,8 +32,12 @@ const bookingSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
+    updatedAt: {
+      type: Date,
+      default: Date.now,
+    },
   },
   { timestamps: true }
 );
 
-export default mongoose.model('Booking', bookingSchema);
+export default mongoose.model("Booking", bookingSchema);

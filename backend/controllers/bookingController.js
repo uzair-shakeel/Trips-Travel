@@ -75,7 +75,7 @@ const getBooking = async (req, res) => {
 const getAllBookings = async (req, res) => {
   try {
     const bookings = await Booking.find().sort({
-      timestamps: -1,
+      updatedAt: -1,
     });
     res
       .status(200)
