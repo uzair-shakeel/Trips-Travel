@@ -21,6 +21,13 @@ const BookingCard = ({ booking }) => {
   const booked = new Date(date);
   const bookedFor = booked.toDateString(); // Get a string representing the date portion
 
+  const confirmDelete = async () => {
+    const result = window.confirm("Is this booking completed?");
+    if (result) {
+      deleteBooking();
+    }
+  };
+
   const deleteBooking = async () => {
     try {
       const response = await fetch(`${BASE_URL}/booking/${_id}`, {
@@ -52,7 +59,7 @@ const BookingCard = ({ booking }) => {
           <td className="">{newCreatedAt}</td>
           <td className="">{totalPrice}</td>
           <td>
-            <button onClick={deleteBooking} className="Redbtn my-2 mx-2 ">
+            <button onClick={confirmDelete} className="Redbtn my-2 mx-2 ">
               Completed
             </button>
           </td>
