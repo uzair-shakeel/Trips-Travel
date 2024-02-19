@@ -3,8 +3,8 @@ import Tour from "../models/Tour.js";
 const getAllTours = async (req, res) => {
   const page = parseInt(req.query.page);
   try {
-    const tours = await Tour.find({ timestamps: -1 })
-      .sort({ timestamp: -1 })
+    const tours = await Tour.find()
+      .sort({ timestamps: -1 })
       .populate("reviews")
       .skip(page * 12)
       .limit(12);
