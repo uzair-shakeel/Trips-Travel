@@ -83,13 +83,13 @@ const MyAccount = () => {
             </div>
           </div>
 
-          <div className="md:col-span-2 md:px-[30px] ">
-            <div>
+          <div className="col-span-2 md:px-[30px] ">
+            <div className="flex">
               <button
                 onClick={() => setTab("bookings")}
                 className={`${
                   tab === "bookings" && "bg-GrayColor text-white font-bold"
-                } p-2 mr-5 px-5 rounded-md text-HeadingColor font-semibold text-[16px] leading-7 border border-solid border-Color`}
+                } p-2 mr-5 px-3 lg:px-5 rounded-md text-HeadingColor font-semibold text-[13px] md:text-[14px] lg:text-[16px] leading-7 border border-solid border-Color`}
               >
                 My Bookings
               </button>
@@ -97,7 +97,7 @@ const MyAccount = () => {
                 onClick={() => setTab("settings")}
                 className={`${
                   tab === "settings" && "bg-GrayColor text-white font-bold"
-                } p-2 mr-5 px-5 rounded-md text-HeadingColor font-semibold text-[16px] leading-7 border border-solid border-Color`}
+                } p-2 mr-5 px-3 lg:px-5 rounded-md text-HeadingColor font-semibold text-[13px] md:text-[14px] lg:text-[16px] leading-7 border border-solid border-Color`}
               >
                 Profile Settings
               </button>

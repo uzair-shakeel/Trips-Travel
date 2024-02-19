@@ -11,9 +11,6 @@ const Bookings = () => {
   return (
     <div className="py-8">
       <div className="flex flex-col gap-5">
-        <p className="md:hidden text-red-500">
-          Please login from a system to access all the functionalities.
-        </p>
         <table className="w-full table-auto text-xs md:text-sm gap-4 border-collapse border">
           <thead className="w-full py-2">
             <tr>

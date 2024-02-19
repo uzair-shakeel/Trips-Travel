@@ -12,19 +12,6 @@ const Profile = () => {
     `${BASE_URL}/tour/${user._id}`
   );
 
-  // const [pic, setPic] = useState('')
-  //   const handlePhoto = async(e) => {
-  //     try {
-  //       const file = e.target.files[0]
-  //         const base64 = await convertToBase64(file);
-  //         setPic(base64);
-
-  //         setFormData(prevFormData => ({ ...prevFormData, photo: base64 }))
-  //     } catch (error) {
-  //         console.error("Error converting to Base64:");
-  //     }
-  // }
-
   const [formData, setFormData] = useState({
     username: "",
     email: "",
@@ -113,14 +100,14 @@ const Profile = () => {
               id="customFile"
               accept=".png, .jpg, .jpeg"
             />
-
+            {/* 
             <label
               htmlFor="customFile"
               className="absolute top-0 left-0 w-full h-full flex items-center
               px-[.75rem] py-[.375rem] text-center text-[15px] leading-6 overflow-hidden cursor-pointer text-HeadingColor font-semibold rounded-lg truncate bg-blue-100"
             >
               Upload Photo
-            </label>
+            </label> */}
           </div>
         </div>
 
