@@ -136,6 +136,19 @@ const TourDetails = () => {
                 <p className="mobpara md:para">{desc}</p>
               </div>
 
+              <div className="my-8 w-full flex justify-center">
+                <iframe
+                title="Tour Location Map"
+                src={`https://www.google.com/maps?q=${encodeURIComponent(address || city)}&output=embed`}
+                width="100%"
+                height="400"
+                style={{ border: 0, borderRadius: "10px" }}
+                allowFullScreen=""
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade">
+                </iframe>
+                </div>
+
               <div>
                 <h3 className="text-[25px] md:text-[35px]  font-bold mb-4 text-center md:text-start ">
                   Reviews ({reviewsArray.length} reviews)
